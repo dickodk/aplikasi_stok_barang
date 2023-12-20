@@ -6,7 +6,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Blank Page</h1>
+                        <h1>Menu Create</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -75,7 +75,7 @@
                                 class="form-control @error('nomor_telepon') is-invalid
                             @enderror"
                                 type="number" placeholder="NomorTelepon; Maximal 13 angka" name="nomor_telepon"
-                                value="{{ old('nomor_telepon') }}" required maxlength="15"
+                                value="{{ old('nomor_telepon') }}" required maxlength="13"
                                 oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
 
                             @error('nomor_telepon')
@@ -91,9 +91,9 @@
                 </form>
             </div>
 
-            <div class="card-footer">
+            {{-- <div class="card-footer">
                 Footer
-            </div>
+            </div> --}}
 
     </div>
 

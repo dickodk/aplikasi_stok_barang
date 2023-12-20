@@ -43,7 +43,7 @@
                             <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Nama</th>
+                                    <th>Nama Supplier</th>
                                     <th>Alamat</th>
                                     <th>Nomor Telepon</th>
                                     <th>Action</th>
@@ -55,8 +55,8 @@
                                         <tr>
                                             <td>{{ $item->id }}</td>
                                             <td>{{ $item->nama_supplier }}</td>
-                                            <td></td>
-                                            <td></td>
+                                            <td>{{ $item->alamat }}</td>
+                                            <td>{{ $item->nomor_telepon }}</td>
                                             <td>
                                                 {{-- Button Ubah --}}
 
@@ -112,7 +112,7 @@
                     </div>
                     <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Tidak</button>
-                        <button id="btn-submit-delete" type="submit" class="btn btn-danger">Iya, Hapus</button>
+                        <button id="btn-submit-delete" type="submit" class="btn btn-danger">Iya, hapus!</button>
                     </div>
                 </form>
             </div>

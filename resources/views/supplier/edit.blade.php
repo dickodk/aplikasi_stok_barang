@@ -41,6 +41,7 @@
                     @endif
                     {{-- form input data --}}
                     <form action="{{ route('suppliers.update', $supplier->id) }}" method="POST">
+                        @method('PUT')
                         @csrf
                         <div class="form-group">
 
@@ -49,8 +50,8 @@
                                 class="form-control @error('nama_supplier') is-invalid
                             @enderror"
                                 type="text" name="nama_supplier" id=""
-                                placeholder="Nama Supplier; Maximal 30 karakter" value="{{ old('nama_supplier') }}" required
-                                maxlength="30">
+                                placeholder="Nama Supplier; Maximal 30 karakter"
+                                value="{{ old('nama_supplier', $supplier->nama_supplier) }}" required maxlength="30">
 
                             @error('nama_supplier')
                                 <span class="text-danger">{{ $message }}</span>
@@ -63,7 +64,7 @@
                             <input class="form-control @error('alamat') is-invalid
                             @enderror"
                                 type="text" name="alamat" id="" placeholder="Alamat; Maximal 30 karakter"
-                                value="{{ old('alamat') }}" required maxlength="50">
+                                value="{{ old('alamat', $supplier->alamat) }}" required maxlength="50">
                             @error('alamat')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
@@ -75,7 +76,7 @@
                                 class="form-control @error('nomor_telepon') is-invalid
                             @enderror"
                                 type="number" placeholder="NomorTelepon; Maximal 13 angka" name="nomor_telepon"
-                                value="{{ old('nomor_telepon') }}" required maxlength="15"
+                                value="{{ old('nomor_telepon', $supplier->nomor_telepon) }}" required maxlength="15"
                                 oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
 
                             @error('nomor_telepon')
@@ -91,9 +92,9 @@
                 </form>
             </div>
 
-            <div class="card-footer">
+            {{-- <div class="card-footer">
                 Footer
-            </div>
+            </div> --}}
 
     </div>
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class CustomerController extends Controller
 {
@@ -13,6 +14,9 @@ class CustomerController extends Controller
     public function index()
     {
         //
+        $customers = customer::all();
+        return view('customer.index')
+        ->with('customers', $customers);
     }
 
     /**
@@ -21,6 +25,7 @@ class CustomerController extends Controller
     public function create()
     {
         //
+        return view('customer.create');
     }
 
     /**
@@ -29,6 +34,29 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         //
+        $validateData = $request->validate([
+            'nama_customer' => 'required|max:30',
+            'alamat' => 'required|max:50',
+            'nomor_telepon' => 'required|max:13',
+        ],
+        [
+            'nama_customer.required' => "Kolom :attribute tidak boleh kosong",
+            'nama_customer.max' => "Kolom :attribute tidak boleh lebih dari 30 karakter",
+            'alamat.required' => "Kolom :attribute tidak boleh kosong",
+            'alamat.max' => "Kolom :attribute tidak boleh lebih dari 30 karakter",
+            'nomor_telepon.required' => "Kolom :attribute tidak boleh kosong",
+            'nomor_telepon.max' => "Kolom :attribute tidak boleh lebih dari 30 karakter",
+        ]);
+
+    $inputData = new customer();
+    $inputData->nama_customer = $validateData['nama_customer'];
+    $inputData->alamat = $validateData['alamat'];
+    $inputData->nomor_telepon = $validateData['nomor_telepon'];
+    $inputData->save();
+
+    Session::flash('success', 'Data berhasil ditambahkan');
+
+    return redirect()->back();
     }
 
     /**
