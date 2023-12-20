@@ -1,0 +1,128 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\supplier;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Http\Request;
+
+class SupplierController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        //
+        $suppliers = supplier::all();
+        return view('supplier.index')
+        ->with('suppliers', $suppliers);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
+        return view('supplier.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        //
+        $validateData = $request->validate([
+            'nama_supplier' => 'required|max:30',
+            'alamat' => 'required|max:50',
+            'nomor_telepon' => 'required|max:13',
+        ],
+        [
+            'nama_supplier.required' => "Kolom :attribute tidak boleh kosong",
+            'nama_supplier.max' => "Kolom :attribute tidak boleh lebih dari 30 karakter",
+            'alamat.required' => "Kolom :attribute tidak boleh kosong",
+            'alamat.max' => "Kolom :attribute tidak boleh lebih dari 30 karakter",
+            'nomor_telepon.required' => "Kolom :attribute tidak boleh kosong",
+            'nomor_telepon.max' => "Kolom :attribute tidak boleh lebih dari 30 karakter",
+        ]);
+
+    $inputData = new supplier();
+    $inputData->nama_supplier = $validateData['nama_supplier'];
+    $inputData->alamat = $validateData['alamat'];
+    $inputData->nomor_telepon = $validateData['nomor_telepon'];
+    $inputData->save();
+
+    Session::flash('success','Data berhasil ditambahkan');
+
+    // $request->session()->flash('success', 'Data berhasil ditambahkan');
+    return redirect()->back();
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(supplier $supplier)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(supplier $supplier)
+    {
+        //
+        return view('supplier.edit')->with('supplier', $supplier);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, supplier $supplier)
+    {
+        {
+        //
+        // dd($request);
+        $validateData = $request->validate([
+            'nama_supplier' => 'required|max:255',
+            'alamat' => 'required|max:255',
+            'nomor_telepon' => 'required|max:255',
+        ],
+        [
+            'nama_supplier.required' => "Kolom :attribute tidak boleh kosong",
+            'nama_supplier.max' => "Kolom :attribute tidak boleh lebih dari 255 karakter",
+            'alamat.required' => "Kolom :attribute tidak boleh kosong",
+            'alamat.max' => "Kolom :attribute tidak boleh lebih dari 255 karakter",
+            'nomor_telepon.required' => "Kolom :attribute tidak boleh kosong",
+            'nomor_telepon.max' => "Kolom :attribute tidak boleh lebih dari 255 karakter",
+        ]);
+
+        // $getSupplier = supplier::find($supplier->id);
+        $supplier->update([
+        'nama_supplier' => $validateData['nama_supplier'],
+        'alamat' => $validateData['alamat'],
+        'nomor_telepon' => $validateData['nomor_telepon'],
+        ]);
+
+
+        Session::flash('success','Data berhasil diubah');
+
+        return redirect()->route('supplier.index');
+        }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(supplier $supplier)
+    {
+        //
+        $supplier->delete();
+
+        Session::flash('success','Data berhasil dihapus');
+        return redirect()->back();
+
+    }
+}
