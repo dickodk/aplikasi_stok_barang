@@ -43,9 +43,9 @@ class CustomerController extends Controller
             'nama_customer.required' => "Kolom :attribute tidak boleh kosong",
             'nama_customer.max' => "Kolom :attribute tidak boleh lebih dari 30 karakter",
             'alamat.required' => "Kolom :attribute tidak boleh kosong",
-            'alamat.max' => "Kolom :attribute tidak boleh lebih dari 30 karakter",
+            'alamat.max' => "Kolom :attribute tidak boleh lebih dari 50 karakter",
             'nomor_telepon.required' => "Kolom :attribute tidak boleh kosong",
-            'nomor_telepon.max' => "Kolom :attribute tidak boleh lebih dari 30 karakter",
+            'nomor_telepon.max' => "Kolom :attribute tidak boleh lebih dari 13 karakter",
         ]);
 
     $inputData = new customer();
@@ -73,6 +73,7 @@ class CustomerController extends Controller
     public function edit(customer $customer)
     {
         //
+        return view('customer.edit')->with('customer', $customer);
     }
 
     /**
@@ -80,7 +81,35 @@ class CustomerController extends Controller
      */
     public function update(Request $request, customer $customer)
     {
+        {
         //
+        // dd($request);
+        $validateData = $request->validate([
+            'nama_customer' => 'required|max:30',
+            'alamat' => 'required|max:50',
+            'nomor_telepon' => 'required|max:15',
+        ],
+        [
+            'nama_customer.required' => "Kolom :attribute tidak boleh kosong",
+            'nama_customer.max' => "Kolom :attribute tidak boleh lebih dari 30 karakter",
+            'alamat.required' => "Kolom :attribute tidak boleh kosong",
+            'alamat.max' => "Kolom :attribute tidak boleh lebih dari 50 karakter",
+            'nomor_telepon.required' => "Kolom :attribute tidak boleh kosong",
+            'nomor_telepon.max' => "Kolom :attribute tidak boleh lebih dari 15 karakter",
+        ]);
+
+
+        $customer->update([
+        'nama_customer' => $validateData['nama_customer'],
+        'alamat' => $validateData['alamat'],
+        'nomor_telepon' => $validateData['nomor_telepon'],
+        ]);
+
+
+        Session::flash('success','Data berhasil diubah');
+
+        return redirect()->route('customers.index');
+        }
     }
 
     /**
@@ -88,6 +117,9 @@ class CustomerController extends Controller
      */
     public function destroy(customer $customer)
     {
-        //
+         //
+        $customer->delete();
+        Session::flash('success','Data berhasil dihapus');
+        return redirect()->back();
     }
 }

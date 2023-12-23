@@ -34,7 +34,7 @@ class JenisBarangController extends Controller
     {
         //
         $validateData = $request->validate([
-            'jenis_barang' => 'required|max:255'
+            'jenis_barang' => 'required|max:255|unique:jenis_barangs,Jenis_barang'
         ],
         [
             'jenis_barang.required' => "Kolom :attribute tidak boleh kosong",

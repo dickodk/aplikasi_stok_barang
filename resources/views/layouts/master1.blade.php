@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Blank Page</title>
+    <title>Aplikasi Stok Barang | CV POLONIUM METALINDO</title>
 
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -33,9 +33,9 @@
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="#" class="nav-link">Home</a>
                 </li>
-                <li class="nav-item d-none d-sm-inline-block">
+                {{-- <li class="nav-item d-none d-sm-inline-block">
                     <a href="#" class="nav-link">Contact</a>
-                </li>
+                </li> --}}
             </ul>
 
             <ul class="navbar-nav ml-auto">
@@ -180,7 +180,7 @@
                             alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">Alexander Pierce</a>
+                        <a href="#" class="d-block">Alexander Pierce Moriarty</a>
                     </div>
                 </div>
 
@@ -219,14 +219,7 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="/customers" class="nav-link">
-                                <i class="nav-icon far fa-copy"></i>
-                                <p>
-                                    Data Customer
-                                </p>
-                            </a>
-                        </li>
+
 
 
                         <li class="nav-item">
@@ -250,24 +243,34 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a href="/detail_barang_masuks" class="nav-link">
                                 <i class="nav-icon far fa-copy"></i>
                                 <p>
                                     Detail Masuk
                                 </p>
                             </a>
-                        </li>
-                        <li class="nav-item">
+                        </li> --}}
+                        {{-- <li class="nav-item">
                             <a href="/detail_barang_keluars" class="nav-link">
                                 <i class="nav-icon far fa-copy"></i>
                                 <p>
                                     Detail Keluar
                                 </p>
                             </a>
-                        </li>
+                        </li> --}}
+
                         {{-- Pembatas aja kok #3 --}}
                         <li class="nav-header">Output</li>
+
+                        <li class="nav-item">
+                            <a href="/customers" class="nav-link">
+                                <i class="nav-icon far fa-copy"></i>
+                                <p>
+                                    Data Customer
+                                </p>
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a href="/barang_keluars" class="nav-link">
                                 <i class="nav-icon far fa-copy"></i>

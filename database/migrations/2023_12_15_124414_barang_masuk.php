@@ -12,6 +12,7 @@ return new class extends Migration
             $table->id();
             $table->integer('id_supplier')->nullable();
             $table->date('tgl_penerimaan')->nullable();
+            $table->date('qty')->nullable();
             $table->timestamps();
         });
     }

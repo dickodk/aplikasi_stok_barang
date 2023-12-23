@@ -43,9 +43,9 @@ class SupplierController extends Controller
             'nama_supplier.required' => "Kolom :attribute tidak boleh kosong",
             'nama_supplier.max' => "Kolom :attribute tidak boleh lebih dari 30 karakter",
             'alamat.required' => "Kolom :attribute tidak boleh kosong",
-            'alamat.max' => "Kolom :attribute tidak boleh lebih dari 30 karakter",
+            'alamat.max' => "Kolom :attribute tidak boleh lebih dari 50 karakter",
             'nomor_telepon.required' => "Kolom :attribute tidak boleh kosong",
-            'nomor_telepon.max' => "Kolom :attribute tidak boleh lebih dari 30 karakter",
+            'nomor_telepon.max' => "Kolom :attribute tidak boleh lebih dari 13 karakter",
         ]);
 
     $inputData = new supplier();
@@ -86,17 +86,17 @@ class SupplierController extends Controller
         //
         // dd($request);
         $validateData = $request->validate([
-            'nama_supplier' => 'required|max:255',
-            'alamat' => 'required|max:255',
-            'nomor_telepon' => 'required|max:255',
+            'nama_supplier' => 'required|max:30',
+            'alamat' => 'required|max:50',
+            'nomor_telepon' => 'required|max:13',
         ],
         [
             'nama_supplier.required' => "Kolom :attribute tidak boleh kosong",
-            'nama_supplier.max' => "Kolom :attribute tidak boleh lebih dari 255 karakter",
+            'nama_supplier.max' => "Kolom :attribute tidak boleh lebih dari 30 karakter",
             'alamat.required' => "Kolom :attribute tidak boleh kosong",
-            'alamat.max' => "Kolom :attribute tidak boleh lebih dari 255 karakter",
+            'alamat.max' => "Kolom :attribute tidak boleh lebih dari 50 karakter",
             'nomor_telepon.required' => "Kolom :attribute tidak boleh kosong",
-            'nomor_telepon.max' => "Kolom :attribute tidak boleh lebih dari 255 karakter",
+            'nomor_telepon.max' => "Kolom :attribute tidak boleh lebih dari 13 karakter",
         ]);
 
         // $getSupplier = supplier::find($supplier->id);
