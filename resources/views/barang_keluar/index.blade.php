@@ -48,7 +48,9 @@
                                     <th>qty</th>
                                     <th>Nomor Surat Jalan</th>
                                     <th>diskon</th>
+                                    <th>ppn</th>
                                     <th>Action</th>
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -60,12 +62,14 @@
                                             <td>{{ $item->tgl_pengiriman }}</td>
                                             <td>{{ $item->qty }}</td>
                                             <td>{{ $item->no_surat_jalan }}</td>
-                                            <td>{{ $item->diskon }}</td>
+                                            <td>{{ $item->diskon }}%</td>
+                                            <td>{{ $item->ppn }}</td>
+
                                             <td>
                                                 {{-- Button Ubah --}}
 
                                                 <a class="btn btn-warning mr-2"
-                                                    href="{{ route('barang_keluars.edit', ['barang' => $item->id]) }}">Edit</a>
+                                                    href="{{ route('barang_keluars.edit', ['barang_keluar' => $item->id]) }}">Edit</a>
 
                                                 {{-- Button Hapus --}}
                                                 <button class="btn btn-danger btn-hapus" data-id="{{ $item->id }}"
@@ -124,8 +128,8 @@
             let id = $(this).attr('data-id');
             $('#formDelete').attr('action', '/barang_keluars/' + id);
 
-            let barang = $(this).attr('data-barang');
-            $('#mb-konfirmasi').text("Apakah anda yakin ingin menghapus data : " + barang + " ?")
+            let barang_keluar = $(this).attr('data-barang_keluar');
+            $('#mb-konfirmasi').text("Apakah anda yakin ingin menghapus data : " + barang_keluar + " ?")
         })
 
         // jika tombol Ya, hapus ditekan, submit form hapus

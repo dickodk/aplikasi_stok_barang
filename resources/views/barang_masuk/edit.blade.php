@@ -78,8 +78,8 @@
                             <label for="">qty</label>
                             <input class="form-control @error('qty') is-invalid
                             @enderror"
-                                type="number" placeholder="qty; Maximal 255 angka" name="qty"
-                                value="{{ old('qty', $barangMasuks->qty) }}" required maxlength="255"
+                                type="number" placeholder="qty" name="qty" value="{{ old('qty', $barangMasuks->qty) }}"
+                                required
                                 oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                             @error('qty')
                                 <span class="text-danger">{{ $message }}</span>

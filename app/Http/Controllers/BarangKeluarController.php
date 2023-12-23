@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\BarangKeluar;
-use App\Models\BarangMasuk;
 use App\Models\customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -16,9 +15,9 @@ class BarangKeluarController extends Controller
     public function index()
     {
         //
-        $barangKeluar = BarangMasuk::all();
+        $barang_keluars = BarangKeluar::all();
         return view('barang_keluar.index')
-        ->with('barangKeluar', $barangKeluar);
+        ->with('barang_keluars', $barang_keluars);
     }
 
     /**
@@ -27,10 +26,9 @@ class BarangKeluarController extends Controller
     public function create()
     {
         //
-        return view('jenis_barang.create');
-        // $customers = customer::all();
-        // return view('barang_keluar.create')
-        // ->with('customers' $customers);
+        $customers = customer::all();
+        return view('barang_keluar.create')
+        ->with('customers', $customers);
     }
 
     /**
@@ -39,6 +37,36 @@ class BarangKeluarController extends Controller
     public function store(Request $request)
     {
         //
+        $validateData = $request->validate([
+            'id_customer' => 'required',
+            'tgl_pengiriman' => 'required',
+            'qty' => 'required',
+            'no_surat_jalan' => 'required',
+            'diskon' => 'required',
+            'ppn' => 'required'
+        ],
+        [
+            'id_customer.required' => "Kolom :attribute tidak boleh kosong",
+            'tgl_pengiriman.required' => "Kolom :attribute tidak boleh kosong",
+            'qty.required' => "Kolom :attribute tidak boleh kosong",
+            'no_surat_jalan.required' => "Kolom :attribute tidak boleh kosong",
+            'diskon.required' => "Kolom :attribute tidak boleh kosong",
+            'ppn.required' => "Kolom :attribute tidak boleh kosong",
+        ]);
+
+        $inputData = new BarangKeluar();
+        $inputData->id_customer = $validateData['id_customer'];
+        $inputData->tgl_pengiriman = $validateData['tgl_pengiriman'];
+        $inputData->qty = $validateData['qty'];
+        $inputData->no_surat_jalan = $validateData['no_surat_jalan'];
+        $inputData->diskon = $validateData['diskon'];
+        $inputData->ppn = $validateData['ppn'];
+        $inputData->save();
+
+        Session::flash('success', 'Data berhasil ditambahkan');
+
+        return redirect()->back();
+
     }
 
     /**
@@ -71,5 +99,8 @@ class BarangKeluarController extends Controller
     public function destroy(BarangKeluar $barangKeluar)
     {
         //
+        $barangKeluar->delete();
+        Session::flash('success','Data berhasil dihapus');
+        return redirect()->back();
     }
 }

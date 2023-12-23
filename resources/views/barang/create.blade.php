@@ -62,8 +62,8 @@
                             <label for="">qty</label>
                             <input class="form-control @error('qty') is-invalid
                             @enderror"
-                                type="number" placeholder="qty; Maximal 4 angka" name="qty" value="{{ old('qty') }}"
-                                required maxlength="4"
+                                type="number" placeholder="qty" name="qty" value="{{ old('qty') }}" required
+                                maxlength="20"
                                 oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                             @error('qty')
                                 <span class="text-danger">{{ $message }}</span>
@@ -79,8 +79,22 @@
                             @enderror
 
 
-
                             <script>
+                                function updateCurrency(input) {
+                                    // Hapus karakter non-numeric
+                                    let value = input.value.replace(/\D/g, '');
+
+                                    // Format nilai sebagai mata uang
+                                    value = new Intl.NumberFormat('id-ID', {
+                                        style: 'currency',
+                                    }).format(value);
+
+                                    // Perbarui nilai input dengan nilai yang diformat
+                                    input.value = value;
+                                }
+                            </script>
+
+                            {{-- <script>
                                 function updateCurrency(input) {
                                     // Mengambil nilai input
                                     var inputValue = input.value;
@@ -105,7 +119,7 @@
                                         input.value = '';
                                     }
                                 }
-                            </script>
+                            </script> --}}
 
 
                         </div>

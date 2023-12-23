@@ -39,17 +39,17 @@ class BarangController extends Controller
          //
         //  dd('bang');
         $validateData = $request->validate([
-            'nama_barang' => 'required|max:30',
+            'nama_barang' => 'required|max:30|unique:barangs,nama_barang',
             'harga_jual' => 'required',
-            'qty' => 'required',
+            'qty' => 'required|max:20',
             'id_jenis_barang' => 'required',
         ],
         [
             'nama_barang.required' => "Kolom :attribute tidak boleh kosong",
             'nama_barang.max' => "Kolom :attribute tidak boleh lebih dari 30 karakter",
             'harga_jual.required' => "Kolom :attribute tidak boleh kosong",
-            'harga_jual.max' => "Kolom :attribute tidak boleh lebih dari 30 karakter",
             'qty.required' => "Kolom :attribute tidak boleh kosong",
+            'qty.max' => "Kolom :attribute tidak boleh lebih dari 20 karakter",
             'id_jenis_barang.required' => "Kolom :attribute tidak boleh kosong",
 
         ]);
