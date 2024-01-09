@@ -44,7 +44,7 @@
                                 <tr>
                                     <th>Id</th>
                                     <th>Nama barang</th>
-                                    <th>Harga</th>
+                                    <th>Harga Jual</th>
                                     <th>qty</th>
                                     <th>Jenis Barang</th>
                                     <th>Action</th>
@@ -56,9 +56,10 @@
                                         <tr>
                                             <td>{{ $item->id }}</td>
                                             <td>{{ $item->nama_barang }}</td>
-                                            <td>Rp {{ $item->harga_jual }}</td>
-                                            <td>{{ $item->qty }}</td>
-                                            <td>{{ $item->id_jenis_barang }}</td>
+                                            <td>Rp {{ number_format($item->harga_jual, 0) }}</td>
+                                            <td>{{ number_format($item->qty, 0) }}</td>
+                                            <td>{{ $item->jenis_barang->Jenis_barang }}</td>
+
                                             <td>
                                                 {{-- Button Ubah --}}
 

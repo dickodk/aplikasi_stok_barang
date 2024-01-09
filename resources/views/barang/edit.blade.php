@@ -103,7 +103,9 @@
                                 fdprocessedid="4k1jpe" name="id_jenis_barang" required>
                                 <option value="">--Silahkan Pilih Jenis Barang--</option>
                                 @foreach ($jenisBarang as $item)
-                                    <option value="{{ $item->id }}">{{ $item->Jenis_barang }}</option>
+                                    <option value="{{ $item->id }}"
+                                        {{ (old('id_jenis_barang') == $item->id ? 'selected' : $barang->id_jenis_barang == $item->id) ? 'selected' : null }}>
+                                        {{ $item->Jenis_barang }}</option>
                                 @endforeach
                             </select>
                             @error('id_jenis_barang')

@@ -43,14 +43,10 @@
                             <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>id customer</th>
+                                    <th>Nama Customer</th>
                                     <th>Tanggal Pengiriman</th>
-                                    <th>qty</th>
                                     <th>Nomor Surat Jalan</th>
-                                    <th>diskon</th>
-                                    <th>ppn</th>
                                     <th>Action</th>
-
                                 </tr>
                             </thead>
                             <tbody>
@@ -58,23 +54,19 @@
                                     @foreach ($barang_keluars as $item)
                                         <tr>
                                             <td>{{ $item->id }}</td>
-                                            <td>{{ $item->id_customer }}</td>
+                                            <td>{{ $item->customer->nama_customer }}</td>
                                             <td>{{ $item->tgl_pengiriman }}</td>
-                                            <td>{{ $item->qty }}</td>
                                             <td>{{ $item->no_surat_jalan }}</td>
-                                            <td>{{ $item->diskon }}%</td>
-                                            <td>{{ $item->ppn }}</td>
-
                                             <td>
-                                                {{-- Button Ubah --}}
+                                                {{-- Button Detail --}}
 
-                                                <a class="btn btn-warning mr-2"
-                                                    href="{{ route('barang_keluars.edit', ['barang_keluar' => $item->id]) }}">Edit</a>
+                                                <a class="btn btn-info mr-2"
+                                                    href="{{ route('barang_keluars.show', ['barang_keluar' => $item->id]) }}">Detail</a>
 
                                                 {{-- Button Hapus --}}
                                                 <button class="btn btn-danger btn-hapus" data-id="{{ $item->id }}"
                                                     data-toggle="modal" data-target="#modal-sm"
-                                                    data-barang_keluar="{{ $item->barang_keluar }}">Delete</button>
+                                                    data-sup="{{ $item->customer->nama_customer }}">Delete</button>
 
                                             </td>
 
@@ -82,7 +74,7 @@
                                     @endforeach
                                 @else
                                     <tr>
-                                        <td colspan="8"><i>Belum ada data yang diinputkan</i></td>
+                                        <td colspan="5"><i>Belum ada data yang diinputkan</i></td>
                                     </tr>
                                 @endif
                             </tbody>
@@ -113,7 +105,8 @@
                     </div>
                     <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Tidak</button>
-                        <button id="btn-submit-delete" type="submit" class="btn btn-danger">Iya, hapus!</button>
+                        <button id="btn-submit-delete" type="submit" class="btn btn-danger">Iya,
+                            hapus!</button>
                     </div>
                 </form>
             </div>
@@ -128,8 +121,8 @@
             let id = $(this).attr('data-id');
             $('#formDelete').attr('action', '/barang_keluars/' + id);
 
-            let barang_keluar = $(this).attr('data-barang_keluar');
-            $('#mb-konfirmasi').text("Apakah anda yakin ingin menghapus data : " + barang_keluar + " ?")
+            let sup = $(this).attr('data-sup');
+            $('#mb-konfirmasi').text("Apakah anda yakin ingin menghapus data dari : " + sup + " ?")
         })
 
         // jika tombol Ya, hapus ditekan, submit form hapus

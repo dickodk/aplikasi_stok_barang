@@ -42,7 +42,6 @@
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th>Id</th>
                                     <th>Jenis Barang</th>
                                     <th>Action</th>
                                 </tr>
@@ -51,7 +50,6 @@
                                 @if (count($jenisBarangs) > 0)
                                     @foreach ($jenisBarangs as $item)
                                         <tr>
-                                            <td>{{ $item->id }}</td>
                                             <td>{{ $item->Jenis_barang }}</td>
                                             <td>
                                                 {{-- Button Ubah --}}

@@ -43,9 +43,8 @@
                             <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>id supplier</th>
+                                    <th>Nama Supplier</th>
                                     <th>Tanggal Terima</th>
-                                    <th>qty</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -54,19 +53,18 @@
                                     @foreach ($barang_masuks as $item)
                                         <tr>
                                             <td>{{ $item->id }}</td>
-                                            <td>{{ $item->id_supplier }}</td>
+                                            <td>{{ $item->supplier->nama_supplier }}</td>
                                             <td>{{ $item->tgl_penerimaan }}</td>
-                                            <td>{{ $item->qty }}</td>
                                             <td>
-                                                {{-- Button Ubah --}}
+                                                {{-- Button Detaol --}}
 
-                                                <a class="btn btn-warning mr-2"
-                                                    href="{{ route('barang_masuks.edit', ['barang' => $item->id]) }}">Edit</a>
+                                                <a class="btn btn-info mr-2"
+                                                    href="{{ route('barang_masuks.show', ['barang_masuk' => $item->id]) }}">Detail</a>
 
                                                 {{-- Button Hapus --}}
                                                 <button class="btn btn-danger btn-hapus" data-id="{{ $item->id }}"
                                                     data-toggle="modal" data-target="#modal-sm"
-                                                    data-barang="{{ $item->barang }}">Delete</button>
+                                                    data-sup="{{ $item->supplier->nama_supplier }}">Delete</button>
 
                                             </td>
 
@@ -105,7 +103,8 @@
                     </div>
                     <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Tidak</button>
-                        <button id="btn-submit-delete" type="submit" class="btn btn-danger">Iya, hapus!</button>
+                        <button id="btn-submit-delete" type="submit" class="btn btn-danger">Iya,
+                            hapus!</button>
                     </div>
                 </form>
             </div>
@@ -120,8 +119,8 @@
             let id = $(this).attr('data-id');
             $('#formDelete').attr('action', '/barang_masuks/' + id);
 
-            let barang_masuk = $(this).attr('data-barang_masuk');
-            $('#mb-konfirmasi').text("Apakah anda yakin ingin menghapus data : " + barang_masuk + " ?")
+            let sup = $(this).attr('data-sup');
+            $('#mb-konfirmasi').text("Apakah anda yakin ingin menghapus data dari : " + sup + " ?")
         })
 
         // jika tombol Ya, hapus ditekan, submit form hapus

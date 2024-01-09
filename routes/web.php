@@ -35,4 +35,4 @@ Route::resource('customers', CustomerController::class);
 Route::resource('barang_masuks', BarangMasukController::class);
 Route::resource('barang_keluars', BarangKeluarController::class);
 Route::resource('detail_barang_masuks', DetailBarangMasukController::class);
-Route::resource('detail_barang_masuks', DetailBarangKeluarController::class);
+Route::resource('detail_barang_keluars', DetailBarangKeluarController::class);

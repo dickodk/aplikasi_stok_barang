@@ -82,12 +82,14 @@
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
+
+                        <div class="form-group">
+                            <button class="btn btn-success" type="submit">Simpan</button>
+                        </div>
                 </div>
 
 
-                <div class="form-group">
-                    <button class="btn btn-success" type="submit">Simpan</button>
-                </div>
+
                 </form>
             </div>
 

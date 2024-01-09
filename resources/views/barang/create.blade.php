@@ -44,7 +44,7 @@
                         @csrf
                         <div class="form-group">
 
-                            <label for="">Nama Produk</label>
+                            <label for="">Nama Barang</label>
                             <input
                                 class="form-control @error('nama_barang') is-invalid
                             @enderror"
@@ -60,7 +60,8 @@
 
                         <div class="form-group">
                             <label for="">qty</label>
-                            <input class="form-control @error('qty') is-invalid
+                            <input min="0"
+                                class="form-control @error('qty') is-invalid
                             @enderror"
                                 type="number" placeholder="qty" name="qty" value="{{ old('qty') }}" required
                                 maxlength="20"
@@ -72,8 +73,9 @@
 
                         <div class="form-group">
                             <label for="harga_jual">Harga</label>
-                            <input class="form-control @error('harga_jual') is-invalid @enderror" type="text"
-                                placeholder="Harga_jual" name="harga_jual" required oninput="updateCurrency(this)">
+                            <input min="0" class="form-control @error('harga_jual') is-invalid @enderror"
+                                type="number" placeholder="Harga_jual" name="harga_jual" required
+                                oninput="updateCurrency(this)">
                             @error('harga_jual')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror

@@ -40,22 +40,20 @@
                         </div>
                     @endif
                     {{-- form input data --}}
-                    <form action="{{ route('barang_masuks.store') }}" method="POST">
+                    <form action="{{ route('barang_masuks.update', $barangMasuk->id) }}" method="POST">
                         @method('PUT')
                         @csrf
 
                         <div class="form-group">
-                            <div class="form-group">
-                                <label for="">Tanggal Terima</label>
-                                <input
-                                    class="form-control @error('tgl_penerimaan') is-invalid
+                            <label for="">Tanggal Terima</label>
+                            <input
+                                class="form-control @error('tgl_penerimaan') is-invalid
                                 @enderror"
-                                    type="tgl_penerimaan" name="tgl_penerimaan"
-                                    value="{{ old('tgl_penerimaan', $barang_masuks->tgl_penerimaan) }}" required>
-                                @error('tgl_penerimaan')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
+                                type="date" name="tgl_penerimaan" id=""
+                                value="{{ old('tgl_penerimaan', $barangMasuk->tgl_penerimaan) }}" required>
+                            @error('tgl_penerimaan')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
 
                         <div class="form-group">
@@ -64,7 +62,9 @@
                                 fdprocessedid="4k1jpe" name="id_suppliers" required>
                                 <option value="">--Nama Supplier--</option>
                                 @foreach ($suppliers as $item)
-                                    <option value="{{ $item->id }}">{{ $item->id_suppliers }}</option>
+                                    <option value="{{ $item->id }}"
+                                        {{ (old('id_suppliers') == $item->id ? 'selected' : $barangMasuk->id_supplier == $item->id) ? 'selected' : null }}>
+                                        {{ $item->nama_supplier }}</option>
                                 @endforeach
                             </select>
                             @error('id_suppliers')
@@ -78,9 +78,8 @@
                             <label for="">qty</label>
                             <input class="form-control @error('qty') is-invalid
                             @enderror"
-                                type="number" placeholder="qty" name="qty" value="{{ old('qty', $barangMasuks->qty) }}"
-                                required
-                                oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                                type="number" placeholder="qty" name="qty" value="{{ old('qty', $barangMasuk->qty) }}"
+                                required>
                             @error('qty')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
