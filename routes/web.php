@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('layouts.master');
+    return view('layouts.master1');
 });
 // Route::get('/x', function () {
 //     return view('jenis_barang.index');
