@@ -9,4 +9,10 @@ class BarangKeluar extends Model
 {
     use HasFactory;
     protected $fillable = ['id_customer', 'tgl_pengiriman', 'qty', 'no_surat_jalan', 'diskon'];
+
+    public function customer () {
+        return $this->belongsTo(customer::class, 'id_customer', 'id');
+    }
+
+
 }

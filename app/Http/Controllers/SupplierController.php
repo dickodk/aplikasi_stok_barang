@@ -48,16 +48,17 @@ class SupplierController extends Controller
             'nomor_telepon.max' => "Kolom :attribute tidak boleh lebih dari 13 karakter",
         ]);
 
-    $inputData = new supplier();
-    $inputData->nama_supplier = $validateData['nama_supplier'];
-    $inputData->alamat = $validateData['alamat'];
-    $inputData->nomor_telepon = $validateData['nomor_telepon'];
-    $inputData->save();
 
-    Session::flash('success','Data berhasil ditambahkan');
+        $inputData = new supplier();
+        $inputData->nama_supplier = $validateData['nama_supplier'];
+        $inputData->alamat = $validateData['alamat'];
+        $inputData->nomor_telepon = $validateData['nomor_telepon'];
+        $inputData->save();
 
-    // $request->session()->flash('success', 'Data berhasil ditambahkan');
-    return redirect()->back();
+        Session::flash('success','Data berhasil ditambahkan');
+
+        // $request->session()->flash('success', 'Data berhasil ditambahkan');
+        return redirect()->back();
     }
 
     /**

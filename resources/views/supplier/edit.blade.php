@@ -75,7 +75,7 @@
                             <input
                                 class="form-control @error('nomor_telepon') is-invalid
                             @enderror"
-                                type="number" placeholder="NomorTelepon; Maximal 13 angka" name="nomor_telepon"
+                                type="number" placeholder="NomorTelepon; Maximal 15 angka" name="nomor_telepon"
                                 value="{{ old('nomor_telepon', $supplier->nomor_telepon) }}" required maxlength="15"
                                 oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
 

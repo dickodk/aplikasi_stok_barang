@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('tbl_jenis_barang', function (Blueprint $table) {
+        Schema::create('jenis_barangs', function (Blueprint $table) {
             $table->id();
             $table->string('Jenis_barang')->nullable();
             $table->timestamps();
@@ -20,6 +20,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tbl_jenis_barang');
+        Schema::dropIfExists('jenis_barangs');
     }
 };

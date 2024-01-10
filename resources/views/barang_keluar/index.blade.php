@@ -58,6 +58,13 @@
                                             <td>{{ $item->tgl_pengiriman }}</td>
                                             <td>{{ $item->no_surat_jalan }}</td>
                                             <td>
+
+
+                                                {{-- Button Cetak --}}
+
+                                                <a class="btn btn-warning mr-2"
+                                                    href="{{ route('barang_keluars.show', ['barang_keluar' => $item->id]) }}">Cetak</a>
+
                                                 {{-- Button Detail --}}
 
                                                 <a class="btn btn-info mr-2"

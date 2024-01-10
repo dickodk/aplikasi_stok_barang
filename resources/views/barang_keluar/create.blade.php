@@ -49,7 +49,7 @@
                             {{-- kolom tanggal terima --}}
                             <div class="col-lg-4 col-md-6 col-sm-6 col-6">
                                 <div class="form-group">
-                                    <label for="">Tanggal Terima</label>
+                                    <label for="">Tanggal Beli</label>
                                     <input
                                         class="form-control @error('tgl_penerimaan') is-invalid
                                 +@enderror"
@@ -81,11 +81,11 @@
                                 <div class="form-group">
                                     <label for="">Nomor Surat Jalan</label>
                                     <input min="0"
-                                        class="form-control @error('no_surat_jalan[]') is-invalid @enderror" type="number"
-                                        placeholder="Jumlab barang keluar" name="no_surat_jalan[]"
-                                        value="{{ old('no_surat_jalan[]') }}" required maxlength="20"
+                                        class="form-control @error('no_surat_jalan[]') is-invalid @enderror" type="text"
+                                        placeholder="Jumlah barang keluar" name="no_surat_jalan"
+                                        value="{{ old('no_surat_jalan') }}" required maxlength="20"
                                         oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                    @error('no_surat_jalan[]')
+                                    @error('no_surat_jalan')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -93,7 +93,7 @@
                             </div>
 
                             {{-- kolom nama customer --}}
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">
+                            <div class="col-lg-8 col-md-6 col-sm-6 col-6">
                                 <div class="form-group">
                                     <label>Nama Customer</label>
                                     <select class="form-control js-example-basic-single" fdprocessedid="4k1jpe"
@@ -109,6 +109,20 @@
                                 </div>
                             </div>
 
+                            {{-- kolom Diskon --}}
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="">Diskon (%)</label>
+                                    <input min="0" class="form-control @error('diskon[]') is-invalid @enderror"
+                                        type="number" placeholder="Diskon" name="diskon" value="{{ old('diskon') }}"
+                                        required maxlength="20"
+                                        oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                                    @error('diskon')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
+                            </div>
 
                         </div>
                         {{-- end row --}}
@@ -120,7 +134,7 @@
                             <div class="card-header">
                                 <h3 class="card-title">Detail Barang Keluar</h3>
                                 <div class="card-tools">
-                                    <button type="button" class="btn btn-primary btn-sm" onclick="newDetailBarangData()"
+                                    <button type="button" class="btn btn-primary btn-sm" id="dynamic-ar"
                                         title="Klik disini untuk menambahkan detailbarang">
                                         <i class="fas fa-plus"></i></button>
                                 </div>
@@ -148,12 +162,12 @@
                                     </div>
 
                                     {{-- kolom qty --}}
-                                    <div class="col-lg-2">
+                                    <div class="col-lg-4">
                                         <div class="form-group">
                                             <label for="">Jumlah</label>
                                             <input min="0"
-                                                class="form-control @error('jumlah[]') is-invalid @enderror" type="number"
-                                                placeholder="Jumlab barang keluar" name="jumlah[]"
+                                                class="form-control @error('jumlah[]') is-invalid @enderror"
+                                                type="number" placeholder="Jumlab barang keluar" name="jumlah[]"
                                                 value="{{ old('jumlah[]') }}" required maxlength="4"
                                                 oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                                             @error('jumlah[]')
@@ -163,21 +177,7 @@
 
                                     </div>
 
-                                    {{-- kolom Harga --}}
-                                    <div class="col-lg-2">
-                                        <div class="form-group">
-                                            <label for="">Harga</label>
-                                            <input name="harga[]" min="3"
-                                                class="form-control @error('harga[]') is-invalid @enderror" type="number"
-                                                placeholder="Harga Satuan (Rp)" value="{{ old('harga[]') }}" required
-                                                maxlength="20"
-                                                oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                            @error('harga[]')
-                                                <span class="text-danger">{{ $message }}</span>
-                                            @enderror
-                                        </div>
 
-                                    </div>
                                 </div>
                                 {{-- end row --}}
                             </div>
@@ -252,21 +252,7 @@
 
                                     </div>
 
-                                    {{-- kolom Harga --}}
-                                    <div class="col-lg-2">
-                                        <div class="form-group">
-                                            <label for="">Harga</label>
-                                            <input name="harga[]" min="3"
-                                                class="form-control @error('harga[]') is-invalid @enderror" type="number"
-                                                placeholder="Harga Satuan (Rp)" value="{{ old('harga[]') }}" required
-                                                maxlength="20"
-                                                oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                            @error('harga[]')
-                                                <span class="text-danger">{{ $message }}</span>
-                                            @enderror
-                                        </div>
 
-                                    </div>
                                 </div>
                                 {{-- end row --}}
             `);

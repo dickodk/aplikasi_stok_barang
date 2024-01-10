@@ -49,9 +49,7 @@
                         </div>
                     @endif
 
-                    <a class="btn btn-primary mb-3"
-                        href="{{ route('detail_barang_keluars.create', ['barang_keluar' => $barangKeluar->id]) }}">Tambahkan
-                        barang</a>
+
 
                     <table class="table table-bordered table-striped">
                         <thead>
@@ -60,7 +58,6 @@
                                 <th>Jumlah Keluar</th>
                                 <th>Harga Jual Satuan</th>
                                 <th>Total Harga</th>
-                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -74,18 +71,7 @@
                                     <td>Rp {{ number_format($item->harga_jual, 0) }}</td>
                                     <td>Rp {{ number_format($item->qty * $item->harga_jual, 0) }}</td>
 
-                                    <td>
-                                        {{-- Button Detail --}}
 
-                                        <a class="btn btn-warning mr-2"
-                                            href="{{ route('detail_barang_keluars.edit', ['detail_barang_keluar' => $item->id]) }}">Edit</a>
-
-                                        {{-- Button Hapus --}}
-                                        <button class="btn btn-danger btn-hapus" data-id="{{ $item->id }}"
-                                            data-toggle="modal" data-target="#modal-sm"
-                                            data-barang="{{ $item->barang->nama_barang }}">Delete</button>
-
-                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -163,7 +149,7 @@
         // id disini adalah id negara
         $('.btn-hapus').click(function() {
             let id = $(this).attr('data-id');
-            $('#formDelete').attr('action', '/detail_barang_keluars/' + id);
+            $('#formDelete').attr('action', '/cetak_surat_jalan/' + id);
 
             let barang = $(this).attr('data-barang');
             $('#mb-konfirmasi').text("Apakah anda yakin ingin menghapus data : " + barang + " ?")

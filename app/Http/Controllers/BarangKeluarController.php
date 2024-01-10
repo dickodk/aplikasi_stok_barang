@@ -50,8 +50,10 @@ class BarangKeluarController extends Controller
         $inputBarangKeluar = new BarangKeluar();
         $inputBarangKeluar->id_customer = $request->id_customer;
         $inputBarangKeluar->tgl_pengiriman = $request->tgl_pengiriman;
+        $inputBarangKeluar->no_surat_jalan = $request->no_surat_jalan;
+        $inputBarangKeluar->diskon = $request->diskon;
         // dd($inputBarangKeluar);
-        // $inputBarangKeluar->save();
+        $inputBarangKeluar->save();
 
         // Mengambil ID setelah penyimpanan
         $newlyInsertedId = $inputBarangKeluar->id;
@@ -61,14 +63,15 @@ class BarangKeluarController extends Controller
         $dataToInsert = [];
 
         for ($i = 0; $i < count($request->nama_barang); $i++) {
+            $barang = barang::find($request->nama_barang[$i]);
             $dataToInsert[] = [
                 'id_barang' => $request->nama_barang[$i],
                 'id_barang_keluar' => $newlyInsertedId,
                 'qty' => $request->jumlah[$i],
-                'harga_jual' => $request->harga[$i],
+                'harga_jual' => $barang->harga_jual,
             ];
         }
-        dd($dataToInsert);
+        // dd($dataToInsert);
 
         $inputDetailBarangKeluar->insert($dataToInsert);
 
@@ -77,7 +80,7 @@ class BarangKeluarController extends Controller
             $getBarang = barang::findOrFail($request->nama_barang[$i]);
             $currentStok = $getBarang->qty;
             $addStok =  $request->jumlah[$i];
-            $newStok = $currentStok + $addStok;
+            $newStok = $currentStok - $addStok;
 
             $getBarang->update([
                 'qty' => $newStok,
@@ -96,6 +99,13 @@ class BarangKeluarController extends Controller
     public function show(BarangKeluar $barangKeluar)
     {
         //
+        $detailBarangKeluar = DetailBarangKeluar::where('id_barang_keluar', $barangKeluar->id)
+        ->orderBy('id', 'asc')
+        ->get();
+        // dd($detailBarangKeluar);
+        return view('barang_keluar.detail')
+        ->with('barangKeluar', $barangKeluar)
+        ->with('detailBarangKeluar', $detailBarangKeluar);
     }
 
     /**
@@ -103,8 +113,17 @@ class BarangKeluarController extends Controller
      */
     public function edit(BarangKeluar $barangKeluar)
     {
-        //
+        // Pastikan model BarangKeluar ditemukan
+        if (!$barangKeluar) {
+            return abort(404);
     }
+
+        $cutomers = Customer::all();
+        return view('barang_keluar.edit')
+            ->with('cutomers', $cutomers)
+            ->with('barangKeluar', $barangKeluar);
+    }
+
 
     /**
      * Update the specified resource in storage.
@@ -112,7 +131,17 @@ class BarangKeluarController extends Controller
     public function update(Request $request, BarangKeluar $barangKeluar)
     {
         //
+         // Pastikan model BarangKeluar ditemukan
+        if (!$barangKeluar) {
+            return abort(404); // Atau Anda dapat mengarahkannya ke halaman lain sesuai kebutuhan
     }
+
+        $customers = Customer::all(); // Pastikan "S" besar untuk model Customer
+        return view('barang_keluar.edit')
+            ->with('customers', $customers)
+            ->with('barangKeluar', $barangKeluar);
+    }
+
 
     /**
      * Remove the specified resource from storage.
@@ -120,8 +149,35 @@ class BarangKeluarController extends Controller
     public function destroy(BarangKeluar $barangKeluar)
     {
         //
+        $detailBarangKeluar = DetailBarangKeluar::where('id_barang_keluar', $barangKeluar->id)->get();
+        foreach ($detailBarangKeluar as $item) {
+            $getBarang = barang::findOrFail($item->id_barang);
+            $qtyBarang = $getBarang->qty;
+
+            $qtyBarangKeluar = $item->qty;
+            $diff = $qtyBarang - $qtyBarangKeluar;
+
+            $getBarang->update(['qty' => $diff]);
+
+            $item->delete();
+        }
+
         $barangKeluar->delete();
         Session::flash('success','Data berhasil dihapus');
         return redirect()->back();
     }
+
+    public function cetak(BarangKeluar $barangKeluar)
+    {
+        //
+        $detailBarangKeluar = DetailBarangKeluar::where('id_barang_keluar', $barangKeluar->id)
+        ->orderBy('id', 'asc')
+        ->get();
+        // dd($detailBarangKeluar);
+        return view('barang_keluar.cetak')
+        ->with('barangKeluar', $barangKeluar)
+        ->with('detailBarangKeluar', $detailBarangKeluar);
+    }
+
+
 }

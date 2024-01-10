@@ -8,6 +8,7 @@ use App\Http\Controllers\DetailBarangKeluarController;
 use App\Http\Controllers\DetailBarangMasukController;
 use App\Http\Controllers\JenisBarangController;
 use App\Http\Controllers\SupplierController;
+use App\Models\BarangKeluar;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,3 +37,4 @@ Route::resource('barang_masuks', BarangMasukController::class);
 Route::resource('barang_keluars', BarangKeluarController::class);
 Route::resource('detail_barang_masuks', DetailBarangMasukController::class);
 Route::resource('detail_barang_keluars', DetailBarangKeluarController::class);
+Route::get('/users/{id}', "BarangKeluarController@cetak");
