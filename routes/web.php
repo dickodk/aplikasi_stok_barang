@@ -37,4 +37,4 @@ Route::resource('barang_masuks', BarangMasukController::class);
 Route::resource('barang_keluars', BarangKeluarController::class);
 Route::resource('detail_barang_masuks', DetailBarangMasukController::class);
 Route::resource('detail_barang_keluars', DetailBarangKeluarController::class);
-Route::get('/users/{id}', "BarangKeluarController@cetak");
+Route::get('barang_keluars/cetak/{barang_keluar}', [BarangKeluarController::class, 'cetak'])->name("barang_keluars.cetak");

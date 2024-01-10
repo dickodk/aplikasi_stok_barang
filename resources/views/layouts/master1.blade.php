@@ -17,6 +17,15 @@
     <link rel="stylesheet" href="{{ asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
 
+    <style>
+        @media print {
+
+            .no-print,
+            .no-print * {
+                display: none !important;
+            }
+        }
+    </style>
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -922,7 +931,7 @@
 
         @yield('main_content')
 
-        <footer class="main-footer">
+        <footer class="main-footer no-print">
             <div class="float-right d-none d-sm-block">
                 <b>Version</b> 3.2.0
             </div>
