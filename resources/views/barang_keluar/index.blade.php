@@ -62,7 +62,7 @@
 
                                                 {{-- Button Cetak --}}
                                                 <a class="btn btn-warning mr-2"
-                                                    href="{{ route('barang_keluars.cetak', ['barang_keluar' => $item->id]) }}">Cetak</a>
+                                                    href="{{ route('cetak', ['barang_keluar' => $item->id]) }}">Cetak</a>
 
                                                 {{-- Button Detail --}}
                                                 <a class="btn btn-info mr-2"

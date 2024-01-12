@@ -95,6 +95,7 @@ class BarangController extends Controller
     {
         //
         // dd($request);
+        $this->authorize('edit', $barang);
         $validateData = $request->validate([
             'nama_barang' => 'required|max:30',
             'harga_jual' => 'required|max:50',
@@ -131,6 +132,7 @@ class BarangController extends Controller
     public function destroy(barang $barang)
     {
         //
+        $this->authorize('delete', $barang);
         $barang->delete();
         Session::flash('success','Data berhasil dihapus');
         return redirect()->back();

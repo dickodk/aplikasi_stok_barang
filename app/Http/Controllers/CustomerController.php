@@ -84,6 +84,7 @@ class CustomerController extends Controller
         {
         //
         // dd($request);
+        $this->authorize('edit', $customer);
         $validateData = $request->validate([
             'nama_customer' => 'required|max:30',
             'alamat' => 'required|max:50',
@@ -118,6 +119,7 @@ class CustomerController extends Controller
     public function destroy(customer $customer)
     {
          //
+        $this->authorize('delete', $customer);
         $customer->delete();
         Session::flash('success','Data berhasil dihapus');
         return redirect()->back();

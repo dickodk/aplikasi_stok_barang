@@ -96,8 +96,7 @@
                             <div class="col-lg-8 col-md-6 col-sm-6 col-6">
                                 <div class="form-group">
                                     <label>Nama Customer</label>
-                                    <select class="form-control js-example-basic-single" fdprocessedid="4k1jpe"
-                                        name="id_customer" required>
+                                    <select class="form-control" fdprocessedid="4k1jpe" name="id_customer" required>
                                         <option value="">--Nama Customer--</option>
                                         @foreach ($customers as $item)
                                             <option value="{{ $item->id }}">{{ $item->nama_customer }}</option>

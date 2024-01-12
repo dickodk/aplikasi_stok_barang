@@ -75,6 +75,7 @@ class JenisBarangController extends Controller
     {
         //
         // dd($request);
+        $this->authorize('edit', $jenisBarang);
         $validateData = $request->validate([
             'jenis_barang' => 'required|max:255'
         ],
@@ -100,6 +101,7 @@ class JenisBarangController extends Controller
     public function destroy(JenisBarang $jenisBarang)
     {
         //
+        $this->authorize('delete', $jenisBarang);
         $jenisBarang->delete();
 
         Session::flash('success','Data berhasil dihapus');

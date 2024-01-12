@@ -134,6 +134,7 @@ class BarangMasukController extends Controller
     public function update(Request $request, BarangMasuk $barangMasuk)
     {
         //
+        $this->authorize('edit', $barangMasuk);
         $validateData = $request->validate([
             'id_supplier' => 'required',
             'tgl_penerimaan' => 'required',
@@ -163,6 +164,7 @@ class BarangMasukController extends Controller
     public function destroy(BarangMasuk $barangMasuk)
     {
         //
+        $this->authorize('delete', $barangMasuk);
         $detailBarangMasuk = DetailBarangMasuk::where('id_barang_masuk', $barangMasuk->id)->get();
         // dd($detailBarangMasuk);
         foreach ($detailBarangMasuk as $item) {

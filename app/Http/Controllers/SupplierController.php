@@ -86,6 +86,7 @@ class SupplierController extends Controller
         {
         //
         // dd($request);
+        $this->authorize('edit', $supplier);
         $validateData = $request->validate([
             'nama_supplier' => 'required|max:30',
             'alamat' => 'required|max:50',
@@ -120,10 +121,20 @@ class SupplierController extends Controller
     public function destroy(supplier $supplier)
     {
         //
+        $this->authorize('delete', $supplier);
         $supplier->delete();
 
         Session::flash('success','Data berhasil dihapus');
         return redirect()->back();
 
     }
+public function countData()
+{
+    $countData = supplier::count(); // Adjust the model name as needed
+    dd($countData);
+
+    return view('dashboard', compact('countData'));
+}
+
+
 }

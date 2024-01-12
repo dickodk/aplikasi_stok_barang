@@ -98,6 +98,7 @@ class DetailBarangMasukController extends Controller
     public function update(Request $request, DetailBarangMasuk $detailBarangMasuk)
     {
         //
+         $this->authorize('edit', $detailBarangMasuk);
         $validate = $request->validate([
             'nama_barang' => 'required',
             'jumlah' => 'required',
@@ -168,6 +169,7 @@ class DetailBarangMasukController extends Controller
         // $delQty = $newQty - $oldQty;
 
         // $getBarang->destroy(['qty' => $delQty]);
+        $this->authorize('delete', $detailBarangMasuk);
         $getBarang = barang::findOrFail($detailBarangMasuk->id_barang);
         $qtyBarang = $getBarang->qty;
         $qtyBarangMasuk = $detailBarangMasuk->qty;

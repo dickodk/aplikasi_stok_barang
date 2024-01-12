@@ -26,6 +26,6 @@ class User extends Authenticatable
         'password',
     ];
 
-    const CREATED_AT = 'creative_at';
+    const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 }

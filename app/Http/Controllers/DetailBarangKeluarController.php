@@ -106,6 +106,7 @@ class DetailBarangKeluarController extends Controller
     public function destroy(DetailBarangKeluar $detailBarangKeluar)
     {
         //
+        $this->authorize('edit', $detailBarangKeluar);
         $getBarang = barang::findOrFail($detailBarangKeluar->id_barang);
         $qtyBarang = $getBarang->qty;
         $qtyBarangMasuk = $detailBarangKeluar->qty;

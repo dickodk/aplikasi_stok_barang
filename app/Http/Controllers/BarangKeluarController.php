@@ -131,6 +131,7 @@ class BarangKeluarController extends Controller
     public function update(Request $request, BarangKeluar $barangKeluar)
     {
         //
+        $this->authorize('edit', $barangKeluar);
          // Pastikan model BarangKeluar ditemukan
         if (!$barangKeluar) {
             return abort(404); // Atau Anda dapat mengarahkannya ke halaman lain sesuai kebutuhan
@@ -170,6 +171,7 @@ class BarangKeluarController extends Controller
     public function cetak(BarangKeluar $barangKeluar)
     {
         //
+        $this->authorize('delete', $barangKeluar);
         $detailBarangKeluar = DetailBarangKeluar::where('id_barang_keluar', $barangKeluar->id)
         ->orderBy('id', 'asc')
         ->get();
