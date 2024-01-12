@@ -44,8 +44,8 @@ class DetailBarangKeluarController extends Controller
 
         for ($i = 0; $i < count($request->nama_barang); $i++) {
             $dataToInsert[] = [
-                'id_barang' => $request->nama_barang[$i],
-                'id_barang_keluar' => $getBarangKeluarID,
+                'barangs_id' => $request->nama_barang[$i],
+                'barang_keluars_id' => $getBarangKeluarID,
                 'qty' => $request->jumlah[$i],
                 'harga_jual' => $request->harga[$i],
             ];

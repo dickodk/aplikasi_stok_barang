@@ -1,13 +1,13 @@
 @extends('layouts.master1')
-@section('main_content')
 
+@section('main_content')
     <div class="content-wrapper">
 
         <div class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Data Barang Masuk</h1>
+                        <h1 class="m-0">Data Admin</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -26,11 +26,11 @@
                 {{-- card data table --}}
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Daftar Data Barang Masuk</h3>
+                        <h3 class="card-title">Daftar Data Admin</h3>
                     </div>
 
                     <div class="card-body">
-                        <a href="{{ route('barang_masuks.create') }}" class="btn btn-primary mb-4">Tambah</a>
+                        <a href="{{ route('users.create') }}" class="btn btn-primary mb-4">Tambah</a>
 
                         {{-- pesan success input --}}
                         @if (session()->has('success'))
@@ -42,31 +42,25 @@
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th>Id</th>
-                                    <th>Nama Supplier</th>
-                                    <th>Tanggal Terima</th>
-                                    <th>Action</th>
+                                    <th>Nama User</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @if (count($barang_masuks) > 0)
-                                    @foreach ($barang_masuks as $item)
-                                        {{-- @dd($item) --}}
-
+                                @if (count($users) > 0)
+                                    @foreach ($users as $item)
                                         <tr>
-                                            <td>{{ $item->id }}</td>
-                                            <td>{{ $item->supplier->nama_supplier }}</td>
-                                            <td>{{ $item->tgl_penerimaan }}</td>
+                                            <td>{{ $item->name }}</td>
+                                            <td>{{ $item->email }}</td>
+                                            <td>{{ $item->role }}</td>
                                             <td>
-                                                {{-- Button Detaol --}}
-
-                                                <a class="btn btn-info mr-2"
-                                                    href="{{ route('barang_masuks.show', ['barang_masuk' => $item->id]) }}">Detail</a>
 
                                                 {{-- Button Hapus --}}
                                                 <button class="btn btn-danger btn-hapus" data-id="{{ $item->id }}"
                                                     data-toggle="modal" data-target="#modal-sm"
-                                                    data-sup="{{ $item->supplier->nama_supplier }}">Delete</button>
+                                                    data-user="{{ $item->user }}">Delete</button>
 
                                             </td>
 
@@ -105,8 +99,7 @@
                     </div>
                     <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Tidak</button>
-                        <button id="btn-submit-delete" type="submit" class="btn btn-danger">Iya,
-                            hapus!</button>
+                        <button id="btn-submit-delete" type="submit" class="btn btn-danger">Iya, hapus!</button>
                     </div>
                 </form>
             </div>
@@ -119,10 +112,10 @@
         // id disini adalah id negara
         $('.btn-hapus').click(function() {
             let id = $(this).attr('data-id');
-            $('#formDelete').attr('action', '/barang_masuks/' + id);
+            $('#formDelete').attr('action', '/users/' + id);
 
-            let sup = $(this).attr('data-sup');
-            $('#mb-konfirmasi').text("Apakah anda yakin ingin menghapus data dari : " + sup + " ?")
+            let user = $(this).attr('data-user');
+            $('#mb-konfirmasi').text("Apakah anda yakin ingin menghapus data : " + user + " ?")
         })
 
         // jika tombol Ya, hapus ditekan, submit form hapus

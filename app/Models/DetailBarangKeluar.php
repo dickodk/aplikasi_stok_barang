@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class DetailBarangKeluar extends Model
 {
     use HasFactory;
-    protected $fillable = ['id_barang', 'qty', 'harga_jual'];
+    protected $fillable = ['barangs_id', 'qty', 'harga_jual'];
 
      public function barang () {
-        return $this->belongsTo(barang::class, 'id_barang', 'id');
+        return $this->belongsTo(barang::class, 'barangs_id', 'id');
     }
 }

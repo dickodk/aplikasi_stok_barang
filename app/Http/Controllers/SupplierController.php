@@ -128,13 +128,12 @@ class SupplierController extends Controller
         return redirect()->back();
 
     }
-public function countData()
-{
-    $countData = supplier::count(); // Adjust the model name as needed
-    dd($countData);
-
-    return view('dashboard', compact('countData'));
-}
+    public function countData()
+    {
+        $countData = supplier::count(); // Adjust the model name as needed
+            // dd($countData);
+        return view('dashboard', compact('countData'));
+    }
 
 
 }

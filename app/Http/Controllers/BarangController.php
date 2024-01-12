@@ -59,7 +59,7 @@ class BarangController extends Controller
     $inputData->nama_barang = $validateData['nama_barang'];
     $inputData->harga_jual = $validateData['harga_jual'];
     $inputData->qty = $validateData['qty'];
-    $inputData->id_jenis_barang = $validateData['id_jenis_barang'];
+    $inputData->jenis_barangs_id = $validateData['id_jenis_barang'];
         //dd($inputData);
     $inputData->save();
 

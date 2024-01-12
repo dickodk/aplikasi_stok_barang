@@ -95,6 +95,14 @@
                         <li class="nav-header">Data</li>
 
                         <li class="nav-item">
+                            <a href="/users" class="nav-link">
+                                <i class="nav-icon fa fa-user-plus"></i>
+                                <p>
+                                    Data User
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="/barangs" class="nav-link">
                                 <i class="nav-icon fa fa-paperclip"></i>
                                 <p>

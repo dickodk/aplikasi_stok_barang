@@ -7,10 +7,13 @@ use App\Http\Controllers\BarangController;
 use App\Http\Controllers\BarangKeluarController;
 use App\Http\Controllers\BarangMasukController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DetailBarangKeluarController;
 use App\Http\Controllers\DetailBarangMasukController;
 use App\Http\Controllers\JenisBarangController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\UserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -29,10 +32,14 @@ Route::get('/', function () {
 });
 
 // Route::get("/logout", [AuthenticatedSessionController::class, 'lohoutSession'])-?
+
 // Route::get('/dashboard', function () {
     // return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
-Route::get('suppliers/dashboard', [SupplierController::class, 'countData'])->name('suppliers.dashboard');
+
+// Route::get('suppliers/dashboard', [SupplierController::class, 'countData'])->name('suppliers.dashboard');
+
+Route::resource('dashboard', DashboardController::class);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -49,6 +56,8 @@ Route::resource('barang_masuks', BarangMasukController::class);
 Route::resource('barang_keluars', BarangKeluarController::class);
 Route::resource('detail_barang_masuks', DetailBarangMasukController::class);
 Route::resource('detail_barang_keluars', DetailBarangKeluarController::class);
+Route::resource('users', UserController::class);
+
 
 Route::get('/cetak/{barang_keluar}', [BarangKeluarController::class, 'cetak'])->name('cetak');
 

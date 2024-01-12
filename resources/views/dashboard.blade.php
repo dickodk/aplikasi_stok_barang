@@ -25,7 +25,8 @@
                     <div class="col-lg-3 col-6">
                         <div class="small-box bg-info">
                             <div class="inner">
-                                {{-- <h3>{{ $countData }}</h3> --}}
+
+                                <h3>{{ count($suppliers) }}</h3>
                                 <p>Supplier</p>
                             </div>
                             <div class="icon">
@@ -40,13 +41,13 @@
 
                         <div class="small-box bg-success">
                             <div class="inner">
-                                <h3>53<sup style="font-size: 20px">%</sup></h3>
-                                <p>Bounce Rate</p>
+                                <h3>{{ count($customers) }}</h3>
+                                <p>Customer</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-stats-bars"></i>
                             </div>
-                            <a href="#" class="small-box-footer">More info <i
+                            <a href="/customers" class="small-box-footer">More info <i
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
@@ -55,13 +56,13 @@
 
                         <div class="small-box bg-warning">
                             <div class="inner">
-                                <h3>44</h3>
-                                <p>User Registrations</p>
+                                <h3>{{ count($barang_masuks) }}</h3>
+                                <p>Stok Barang</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-person-add"></i>
                             </div>
-                            <a href="#" class="small-box-footer">More info <i
+                            <a href="/barang_masuks" class="small-box-footer">More info <i
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
@@ -70,13 +71,13 @@
 
                         <div class="small-box bg-danger">
                             <div class="inner">
-                                <h3>65</h3>
-                                <p>Unique Visitors</p>
+                                <h3>{{ count($barang_keluars) }}</h3>
+                                <p>Barang Terjual</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-pie-graph"></i>
                             </div>
-                            <a href="#" class="small-box-footer">More info <i
+                            <a href="/barang_keluars" class="small-box-footer">More info <i
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>

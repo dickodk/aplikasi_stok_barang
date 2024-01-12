@@ -44,8 +44,8 @@ class DetailBarangMasukController extends Controller
 
         for ($i = 0; $i < count($request->nama_barang); $i++) {
             $dataToInsert[] = [
-                'id_barang' => $request->nama_barang[$i],
-                'id_barang_masuk' => $getBarangMasukID,
+                'barangs_id' => $request->nama_barang[$i],
+                'barang_masuks_id' => $getBarangMasukID,
                 'qty' => $request->jumlah[$i],
                 'harga_beli' => $request->harga[$i],
             ];
@@ -148,7 +148,7 @@ class DetailBarangMasukController extends Controller
         }
 
         $detailBarangMasuk->update([
-            'id_barang' => $validate['nama_barang'],
+            'barangs_id' => $validate['nama_barang'],
             'qty' => $validate['jumlah'],
             'harga_beli' => $validate['harga'],
         ]);

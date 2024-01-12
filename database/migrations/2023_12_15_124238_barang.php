@@ -13,8 +13,9 @@ return new class extends Migration
             $table->string('nama_barang')->nullable();
             $table->bigInteger('harga_jual')->nullable();
             $table->integer('qty')->nullable();
-            $table->integer('id_jenis_barang')->nullable();
+            // $table->integer('id_jenis_barang')->nullable();
             $table->timestamps();
+            $table->foreignId('jenis_barangs_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

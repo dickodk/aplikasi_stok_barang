@@ -48,7 +48,7 @@ class BarangKeluarController extends Controller
 // dd("ll");
         // Proses Input Barang Keluar
         $inputBarangKeluar = new BarangKeluar();
-        $inputBarangKeluar->id_customer = $request->id_customer;
+        $inputBarangKeluar->customers_id = $request->id_customer;
         $inputBarangKeluar->tgl_pengiriman = $request->tgl_pengiriman;
         $inputBarangKeluar->no_surat_jalan = $request->no_surat_jalan;
         $inputBarangKeluar->diskon = $request->diskon;
@@ -65,8 +65,8 @@ class BarangKeluarController extends Controller
         for ($i = 0; $i < count($request->nama_barang); $i++) {
             $barang = barang::find($request->nama_barang[$i]);
             $dataToInsert[] = [
-                'id_barang' => $request->nama_barang[$i],
-                'id_barang_keluar' => $newlyInsertedId,
+                'barangs_id' => $request->nama_barang[$i],
+                'barang_keluars_id' => $newlyInsertedId,
                 'qty' => $request->jumlah[$i],
                 'harga_jual' => $barang->harga_jual,
             ];

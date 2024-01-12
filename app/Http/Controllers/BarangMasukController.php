@@ -48,7 +48,7 @@ class BarangMasukController extends Controller
 
         // proses input barang masuk
         $inputBarangMasuk = new BarangMasuk();
-        $inputBarangMasuk->id_supplier = $request->id_supplier;
+        $inputBarangMasuk->suppliers_id = $request->id_supplier;
         $inputBarangMasuk->tgl_penerimaan = $request->tgl_penerimaan;
         $inputBarangMasuk->save();
 
@@ -61,8 +61,8 @@ class BarangMasukController extends Controller
 
         for ($i = 0; $i < count($request->nama_barang); $i++) {
             $dataToInsert[] = [
-                'id_barang' => $request->nama_barang[$i],
-                'id_barang_masuk' => $newlyInsertedId,
+                'barangs_id' => $request->nama_barang[$i],
+                'barang_masuks_id' => $newlyInsertedId,
                 'qty' => $request->jumlah[$i],
                 'harga_beli' => $request->harga[$i],
             ];
@@ -93,7 +93,7 @@ class BarangMasukController extends Controller
     public function show(BarangMasuk $barangMasuk)
     {
         //
-        $detailBarangMasuk = DetailBarangMasuk::where('id_barang_masuk', $barangMasuk->id)
+        $detailBarangMasuk = DetailBarangMasuk::where('barang_masuks_id', $barangMasuk->id)
         ->orderBy('id', 'asc')
         ->get();
         // dd($detailBarangMasuk);

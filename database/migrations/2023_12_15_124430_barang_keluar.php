@@ -10,11 +10,13 @@ return new class extends Migration
     {
         Schema::create('barang_keluars', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_customer')->nullable();
-            $table->date('tgl_penngiriman')->nullable();
-            $table->integer('no_surat_jalan')->nullable();
-            $table->integer('diskon')->nullable();
+            // $table->integer('id_customer')->nullable();
+            $table->date('tgl_pengiriman');
+            $table->string('no_surat_jalan', 50);
+            $table->integer('diskon');
             $table->timestamps();
+            $table->foreignId('customers_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+
         });
     }
 

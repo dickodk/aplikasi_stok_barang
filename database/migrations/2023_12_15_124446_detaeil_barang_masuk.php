@@ -10,11 +10,13 @@ return new class extends Migration
     {
         Schema::create('detail_barang_masuks', function (Blueprint $table) {
             $table->id();
-            $table->string('id_barang');
-            $table->bigInteger('id_barang_masuk')->nullable();
+            // $table->string('id_barang');
+            // $table->bigInteger('id_barang_masuk')->nullable();
             $table->integer('qty')->nullable();
             $table->bigInteger('harga_beli')->nullable();
             $table->timestamps();
+            $table->foreignId('barang_masuks_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('barangs_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

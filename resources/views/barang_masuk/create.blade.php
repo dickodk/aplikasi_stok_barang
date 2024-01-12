@@ -63,7 +63,7 @@
                             {{-- kolom nama supplier --}}
                             <div class="col-lg-10 col-md-6 col-sm-6 col-6">
                                 <div class="form-group">
-                                    <label>Nama Supplier</label>
+                                    <label for="id_supplier">Nama Supplier</label>
                                     <select class="form-control js-example-basic-single" fdprocessedid="4k1jpe"
                                         name="id_supplier" required>
                                         <option value="">--Nama Supplier--</option>

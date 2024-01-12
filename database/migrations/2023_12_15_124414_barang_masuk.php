@@ -10,10 +10,11 @@ return new class extends Migration
     {
         Schema::create('barang_masuks', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_supplier')->nullable();
+            // $table->integer('id_supplier')->nullable();
             $table->date('tgl_penerimaan')->nullable();
             $table->date('qty')->nullable();
             $table->timestamps();
+            $table->foreignId('suppliers_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
