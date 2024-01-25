@@ -10,10 +10,10 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Dashboard v1</li>
+                            <li class="breadcrumb-item active">Dashboard</li>
                         </ol>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -87,7 +87,7 @@
 
                 <div class="row">
 
-                    <section class="col-lg-7 connectedSortable ui-sortable">
+                    {{-- <section class="col-lg-7 connectedSortable ui-sortable">
 
                         <div class="card">
                             <div class="card-header ui-sortable-handle" style="cursor: move;">
@@ -132,10 +132,10 @@
                             </div>
                         </div>
 
-                    </section>
+                    </section> --}}
 
 
-                    <section class="col-lg-5 connectedSortable ui-sortable">
+                    {{-- <section class="col-lg-5 connectedSortable ui-sortable">
                         <div class="card bg-gradient-success">
                             <div class="card-header border-0 ui-sortable-handle" style="cursor: move;">
                                 <h3 class="card-title">
@@ -445,7 +445,7 @@
 
                         </div>
 
-                    </section>
+                    </section> --}}
 
                 </div>
 

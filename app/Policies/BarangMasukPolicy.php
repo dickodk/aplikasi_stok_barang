@@ -35,19 +35,19 @@ class BarangMasukPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, BarangMasuk $barangMasuk): bool
+    public function update(User $user): bool
     {
         //
-         return $user->role == 'Owner';
+         return $user->role === 'owner';
     }
 
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, BarangMasuk $barangMasuk): bool
+    public function delete(User $user): bool
     {
         //
-        return $user->role == 'Owner';
+        return $user->role === 'owner';
     }
 
     /**

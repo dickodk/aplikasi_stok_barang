@@ -58,16 +58,16 @@
 
                         <div class="form-group">
                             <label>id Supplier</label>
-                            <select class="custom-select  @error('id_suppliers') is-invalid @enderror"
-                                fdprocessedid="4k1jpe" name="id_suppliers" required>
+                            <select class="custom-select  @error('suppliers_id') is-invalid @enderror"
+                                fdprocessedid="4k1jpe" name="suppliers_id" required>
                                 <option value="">--Nama Supplier--</option>
                                 @foreach ($suppliers as $item)
                                     <option value="{{ $item->id }}"
-                                        {{ (old('id_suppliers') == $item->id ? 'selected' : $barangMasuk->id_supplier == $item->id) ? 'selected' : null }}>
+                                        {{ (old('suppliers_id') == $item->id ? 'selected' : $barangMasuk->suppliers_id == $item->id) ? 'selected' : null }}>
                                         {{ $item->nama_supplier }}</option>
                                 @endforeach
                             </select>
-                            @error('id_suppliers')
+                            @error('suppliers_id')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>

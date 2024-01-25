@@ -52,7 +52,7 @@
                                         if (old('nama_barang') !== null) {
                                             $option = old('nama_barang');
                                         } else {
-                                            $option = $detail_barang_masuk->id_barang;
+                                            $option = $detail_barang_masuk->barangs_id;
                                         }
                                     @endphp
 
@@ -111,7 +111,7 @@
                                 <div class="form-group col-lg-8">
                                     <label for="">Hidden barang</label>
                                     <input type="text" class="form-control" name="hidden_barang"
-                                        value="{{ $detail_barang_masuk->id_barang }}" readonly>
+                                        value="{{ $detail_barang_masuk->barangs_id }}" readonly>
                                 </div>
 
                                 <div class="form-group col-lg-2">

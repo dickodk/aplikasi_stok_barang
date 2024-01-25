@@ -42,7 +42,7 @@
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th>Id</th>
+                                    {{-- <th>Id</th> --}}
                                     <th>Nama Supplier</th>
                                     <th>Alamat</th>
                                     <th>Nomor Telepon</th>
@@ -53,7 +53,7 @@
                                 @if (count($suppliers) > 0)
                                     @foreach ($suppliers as $item)
                                         <tr>
-                                            <td>{{ $item->id }}</td>
+                                            {{-- <td>{{ $item->id }}</td> --}}
                                             <td>{{ $item->nama_supplier }}</td>
                                             <td>{{ $item->alamat }}</td>
                                             <td>{{ $item->nomor_telepon }}</td>

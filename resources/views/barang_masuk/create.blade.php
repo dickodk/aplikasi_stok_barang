@@ -63,15 +63,15 @@
                             {{-- kolom nama supplier --}}
                             <div class="col-lg-10 col-md-6 col-sm-6 col-6">
                                 <div class="form-group">
-                                    <label for="id_supplier">Nama Supplier</label>
+                                    <label for="suppliers_id">Nama Supplier</label>
                                     <select class="form-control js-example-basic-single" fdprocessedid="4k1jpe"
-                                        name="id_supplier" required>
+                                        name="suppliers_id" required>
                                         <option value="">--Nama Supplier--</option>
                                         @foreach ($suppliers as $item)
                                             <option value="{{ $item->id }}">{{ $item->nama_supplier }}</option>
                                         @endforeach
                                     </select>
-                                    @error('id_supplier')
+                                    @error('suppliers_id')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>

@@ -68,7 +68,7 @@ class DetailBarangKeluarController extends Controller
 
 
         Session::flash('success', 'Data telah ditambahkan dan stok baranag telah di update');
-        return redirect()->back();
+        return redirect()->route('detail_barang_keluars.index');
     }
 
     /**
@@ -98,6 +98,8 @@ class DetailBarangKeluarController extends Controller
     public function update(Request $request, DetailBarangKeluar $detailBarangKeluar)
     {
         //
+        $this->authorize('update', $detailBarangKeluar);
+        return redirect()->route('detail_barang_keluars.index');
     }
 
     /**
@@ -106,8 +108,8 @@ class DetailBarangKeluarController extends Controller
     public function destroy(DetailBarangKeluar $detailBarangKeluar)
     {
         //
-        $this->authorize('edit', $detailBarangKeluar);
-        $getBarang = barang::findOrFail($detailBarangKeluar->id_barang);
+        $this->authorize('delete', $detailBarangKeluar);
+        $getBarang = barang::findOrFail($detailBarangKeluar->barangs_id);
         $qtyBarang = $getBarang->qty;
         $qtyBarangMasuk = $detailBarangKeluar->qty;
         $diff = $qtyBarang - $qtyBarangMasuk;

@@ -42,7 +42,7 @@
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th>Id</th>
+                                    {{-- <th>Id</th> --}}
                                     <th>Nama Supplier</th>
                                     <th>Tanggal Terima</th>
                                     <th>Action</th>
@@ -54,7 +54,7 @@
                                         {{-- @dd($item) --}}
 
                                         <tr>
-                                            <td>{{ $item->id }}</td>
+                                            {{-- <td>{{ $item->id }}</td> --}}
                                             <td>{{ $item->supplier->nama_supplier }}</td>
                                             <td>{{ $item->tgl_penerimaan }}</td>
                                             <td>

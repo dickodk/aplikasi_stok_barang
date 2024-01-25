@@ -38,7 +38,7 @@ class CutomerPolicy
     public function update(User $user, customer $customer): bool
     {
         //
-         return $user->role == 'Owner';
+        return $user->role == 'owner';
     }
 
     /**
@@ -47,7 +47,7 @@ class CutomerPolicy
     public function delete(User $user, customer $customer): bool
     {
         //
-        return $user->role == 'Owner';
+        return $user->role == 'owner';
     }
 
     /**

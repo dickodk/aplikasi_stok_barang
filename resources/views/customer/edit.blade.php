@@ -50,8 +50,8 @@
                                 class="form-control @error('nama_customer') is-invalid
                             @enderror"
                                 type="text" name="nama_customer" id=""
-                                placeholder="Nama customer; Maximal 30 karakter"
-                                value="{{ old('nama_customer', $customer->nama_customer) }}" required maxlength="30">
+                                placeholder="Nama customer; Maximal 50 karakter"
+                                value="{{ old('nama_customer', $customer->nama_customer) }}" required maxlength="50">
 
                             @error('nama_customer')
                                 <span class="text-danger">{{ $message }}</span>
@@ -63,8 +63,8 @@
                             <label for="">Alamat</label>
                             <input class="form-control @error('alamat') is-invalid
                             @enderror"
-                                type="text" name="alamat" id="" placeholder="Alamat; Maximal 30 karakter"
-                                value="{{ old('alamat', $customer->alamat) }}" required maxlength="50">
+                                type="text" name="alamat" id="" placeholder="Alamat; Maximal 200 karakter"
+                                value="{{ old('alamat', $customer->alamat) }}" required maxlength="200">
                             @error('alamat')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror

@@ -38,7 +38,7 @@ class JenisBarangPolicy
     public function update(User $user, JenisBarang $jenisBarang): bool
     {
         //
-         return $user->role == 'Owner';
+         return $user->role === 'owner';
 
     }
 
@@ -48,7 +48,7 @@ class JenisBarangPolicy
     public function delete(User $user, JenisBarang $jenisBarang): bool
     {
         //
-         return $user->role == 'Owner';
+         return $user->role === 'owner';
     }
 
     /**

@@ -38,7 +38,7 @@ class DetailBarangKeluarPolicy
     public function update(User $user, DetailBarangKeluar $detailBarangKeluar): bool
     {
         //
-         return $user->role == 'Owner';
+         return $user->role == 'owner';
     }
 
     /**
@@ -47,7 +47,7 @@ class DetailBarangKeluarPolicy
     public function delete(User $user, DetailBarangKeluar $detailBarangKeluar): bool
     {
         //
-        return $user->role == 'Owner';
+        return $user->role == 'owner';
     }
 
     /**

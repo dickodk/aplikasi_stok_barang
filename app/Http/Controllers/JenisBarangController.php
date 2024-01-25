@@ -48,7 +48,7 @@ class JenisBarangController extends Controller
     Session::flash('success','Data berhasil ditambahkan');
 
     // $request->session()->flash('success', 'Data berhasil ditambahkan');
-    return redirect()->back();
+    return redirect()->route('jenis_barangs.index');
     }
 
     /**
@@ -75,7 +75,7 @@ class JenisBarangController extends Controller
     {
         //
         // dd($request);
-        $this->authorize('edit', $jenisBarang);
+        $this->authorize('update', $jenisBarang);
         $validateData = $request->validate([
             'jenis_barang' => 'required|max:255'
         ],

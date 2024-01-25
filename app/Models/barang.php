@@ -10,13 +10,13 @@ class barang extends Model
     use HasFactory;
     // protected $fillable = ['barang'];
     // protected $table= ['barangs'];
-    protected $fillable = ['nama_barang', 'harga_jual', 'qty', 'id_jenis_barang'];
+    protected $fillable = ['nama_barang', 'harga_jual', 'qty', 'jenis_barangs_id'];
 
     public function jenis_barang () {
-        return $this->belongsTo(JenisBarang::class, 'id_jenis_barang', 'id');
+        return $this->belongsTo(JenisBarang::class, 'jenis_barangs_id', 'id');
     }
 
     public function detailBarangMasuk () {
-        return $this->hasMany(detailBarangMasuk::class, 'id', 'id_barang');
+        return $this->hasMany(detailBarangMasuk::class, 'id', 'barangs_id');
     }
 }

@@ -46,7 +46,7 @@ class BarangKeluarPolicy
     public function delete(User $user, BarangKeluar $barangKeluar): bool
     {
         //
-        return $user->role == 'Owner';
+        return $user->role == 'owner';
     }
 
     /**
@@ -55,7 +55,7 @@ class BarangKeluarPolicy
     public function restore(User $user, BarangKeluar $barangKeluar): bool
     {
         //
-         return $user->role == 'Owner';
+         return $user->role == 'owner';
     }
 
     /**

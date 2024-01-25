@@ -38,7 +38,7 @@ class SupplierPolicy
     public function update(User $user, supplier $supplier): bool
     {
         //
-         return $user->role == 'Owner';
+         return $user->role == 'owner';
 
     }
 
@@ -48,7 +48,7 @@ class SupplierPolicy
     public function delete(User $user, supplier $supplier): bool
     {
         //
-         return $user->role == 'Owner';
+         return $user->role == 'owner';
     }
 
     /**

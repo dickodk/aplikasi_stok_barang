@@ -81,34 +81,23 @@
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
 
-                            <script>
-                                function updateCurrency(input) {
-                                    // Menghapus karakter selain digit
-                                    var value = input.value.replace(/[^0-9]/g, '');
 
-                                    // Memberikan format dengan tanda pemisah ribuan
-                                    var formattedValue = new Intl.NumberFormat('id-ID').format(value);
-
-                                    // Mengganti nilai input dengan nilai yang sudah diformat
-                                    input.value = formattedValue;
-                                }
-                            </script>
 
                         </div>
 
 
                         <div class="form-group">
                             <label>Jenis Barang</label>
-                            <select class="custom-select  @error('id_jenis_barang') is-invalid @enderror"
-                                fdprocessedid="4k1jpe" name="id_jenis_barang" required>
+                            <select class="custom-select  @error('jenis_barangs_id') is-invalid @enderror"
+                                fdprocessedid="4k1jpe" name="jenis_barangs_id" required>
                                 <option value="">--Silahkan Pilih Jenis Barang--</option>
                                 @foreach ($jenisBarang as $item)
                                     <option value="{{ $item->id }}"
-                                        {{ (old('id_jenis_barang') == $item->id ? 'selected' : $barang->id_jenis_barang == $item->id) ? 'selected' : null }}>
+                                        {{ (old('jenis_barangs_id') == $item->id ? 'selected' : $barang->jenis_barangs_id == $item->id) ? 'selected' : null }}>
                                         {{ $item->Jenis_barang }}</option>
                                 @endforeach
                             </select>
-                            @error('id_jenis_barang')
+                            @error('jenis_barangs_id')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>

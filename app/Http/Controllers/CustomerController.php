@@ -35,15 +35,15 @@ class CustomerController extends Controller
     {
         //
         $validateData = $request->validate([
-            'nama_customer' => 'required|max:30',
-            'alamat' => 'required|max:50',
+            'nama_customer' => 'required|max:50',
+            'alamat' => 'required|max:200',
             'nomor_telepon' => 'required|max:13',
         ],
         [
             'nama_customer.required' => "Kolom :attribute tidak boleh kosong",
-            'nama_customer.max' => "Kolom :attribute tidak boleh lebih dari 30 karakter",
+            'nama_customer.max' => "Kolom :attribute tidak boleh lebih dari 50 karakter",
             'alamat.required' => "Kolom :attribute tidak boleh kosong",
-            'alamat.max' => "Kolom :attribute tidak boleh lebih dari 50 karakter",
+            'alamat.max' => "Kolom :attribute tidak boleh lebih dari 200 karakter",
             'nomor_telepon.required' => "Kolom :attribute tidak boleh kosong",
             'nomor_telepon.max' => "Kolom :attribute tidak boleh lebih dari 13 karakter",
         ]);
@@ -56,7 +56,7 @@ class CustomerController extends Controller
 
     Session::flash('success', 'Data berhasil ditambahkan');
 
-    return redirect()->back();
+    return redirect()->route('customers.index');
     }
 
     /**
@@ -84,17 +84,16 @@ class CustomerController extends Controller
         {
         //
         // dd($request);
-        $this->authorize('edit', $customer);
         $validateData = $request->validate([
-            'nama_customer' => 'required|max:30',
-            'alamat' => 'required|max:50',
+            'nama_customer' => 'required|max:50',
+            'alamat' => 'required|max:200',
             'nomor_telepon' => 'required|max:15',
         ],
         [
             'nama_customer.required' => "Kolom :attribute tidak boleh kosong",
-            'nama_customer.max' => "Kolom :attribute tidak boleh lebih dari 30 karakter",
+            'nama_customer.max' => "Kolom :attribute tidak boleh lebih dari 50 karakter",
             'alamat.required' => "Kolom :attribute tidak boleh kosong",
-            'alamat.max' => "Kolom :attribute tidak boleh lebih dari 50 karakter",
+            'alamat.max' => "Kolom :attribute tidak boleh lebih dari 200 karakter",
             'nomor_telepon.required' => "Kolom :attribute tidak boleh kosong",
             'nomor_telepon.max' => "Kolom :attribute tidak boleh lebih dari 15 karakter",
         ]);
@@ -119,7 +118,6 @@ class CustomerController extends Controller
     public function destroy(customer $customer)
     {
          //
-        $this->authorize('delete', $customer);
         $customer->delete();
         Session::flash('success','Data berhasil dihapus');
         return redirect()->back();

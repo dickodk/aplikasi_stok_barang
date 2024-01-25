@@ -48,7 +48,7 @@ class BarangMasukController extends Controller
 
         // proses input barang masuk
         $inputBarangMasuk = new BarangMasuk();
-        $inputBarangMasuk->suppliers_id = $request->id_supplier;
+        $inputBarangMasuk->suppliers_id = $request->suppliers_id;
         $inputBarangMasuk->tgl_penerimaan = $request->tgl_penerimaan;
         $inputBarangMasuk->save();
 
@@ -83,7 +83,7 @@ class BarangMasukController extends Controller
         }
 
         Session::flash('success', 'Data telah ditambahkan dan stok baranag telah di update');
-        return redirect()->back();
+        return redirect()->route('barang_masuks.index');
 
     }
 
@@ -134,14 +134,14 @@ class BarangMasukController extends Controller
     public function update(Request $request, BarangMasuk $barangMasuk)
     {
         //
-        $this->authorize('edit', $barangMasuk);
+        $this->authorize('update', $barangMasuk);
         $validateData = $request->validate([
-            'id_supplier' => 'required',
+            'suppliers_id' => 'required',
             'tgl_penerimaan' => 'required',
             'qty' => 'required',
         ],
         [
-            'id_supplier.required' => "Kolom :attribute tidak boleh kosong",
+            'suppliers_id.required' => "Kolom :attribute tidak boleh kosong",
             'tgl_penerimaan.required' => "Kolom :attribute tidak boleh kosong",
             'qty.required' => "Kolom :attribute tidak boleh kosong",
 
@@ -149,13 +149,13 @@ class BarangMasukController extends Controller
 
 
         $barangMasuk->update([
-        'id_supplier' => $validateData['id_supplier'],
+        'suppliers_id' => $validateData['suppliers_id'],
         'tgl_penerimaan' => $validateData['tgl_penerimaan'],
         'qty' => $validateData['qty'],
         ]);
 
         Session::flash('success', 'Data berhasil ditambahkan');
-        return redirect()->back();
+        return redirect()->route('barang_masuks.index');
     }
 
     /**

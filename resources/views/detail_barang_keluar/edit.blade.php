@@ -7,7 +7,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Menu Edit</h1>
+                        <h1>Edit Detail Barang Keluar</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -52,7 +52,7 @@
                                         if (old('nama_barang') !== null) {
                                             $option = old('nama_barang');
                                         } else {
-                                            $option = $detail_barang_keluar->id_barang;
+                                            $option = $detail_barang_keluar->barangs_id;
                                         }
                                     @endphp
 
@@ -112,7 +112,7 @@
                                 <div class="form-group col-lg-8">
                                     <label for="">Hidden barang</label>
                                     <input type="text" class="form-control" name="hidden_barang"
-                                        value="{{ $detail_barang_keluar->id_barang }}" readonly>
+                                        value="{{ $detail_barang_keluar->barangs_id }}" readonly>
                                 </div>
 
                                 <div class="form-group col-lg-2">

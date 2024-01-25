@@ -38,7 +38,7 @@ class BarangPolicy
     public function update(User $user, barang $barang): bool
     {
         //
-         return $user->role == 'Owner';
+         return $user->role == 'owner';
     }
 
     /**
@@ -47,7 +47,7 @@ class BarangPolicy
     public function delete(User $user, barang $barang): bool
     {
         //
-        return $user->role == 'Owner';
+        return $user->role == 'owner';
     }
 
     /**

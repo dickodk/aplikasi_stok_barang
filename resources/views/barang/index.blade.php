@@ -42,7 +42,7 @@
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th>Id</th>
+                                    {{-- <th>Id</th> --}}
                                     <th>Nama barang</th>
                                     <th>Harga Jual</th>
                                     <th>qty</th>
@@ -54,7 +54,7 @@
                                 @if (count($barangs) > 0)
                                     @foreach ($barangs as $item)
                                         <tr>
-                                            <td>{{ $item->id }}</td>
+                                            {{-- <td>{{ $item->id }}</td> --}}
                                             <td>{{ $item->nama_barang }}</td>
                                             <td>Rp {{ number_format($item->harga_jual, 0) }}</td>
                                             <td>{{ number_format($item->qty, 0) }}</td>

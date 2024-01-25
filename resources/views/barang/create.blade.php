@@ -130,15 +130,15 @@
                         <div class="form-group">
                             <label>Jenis Barang</label>
                             <select
-                                class="custom-select  @error('id_jenis_barang') is-invalid
+                                class="custom-select  @error('jenis_barangs_id') is-invalid
                             @enderror"
-                                fdprocessedid="4k1jpe" name="id_jenis_barang" required>
+                                fdprocessedid="4k1jpe" name="jenis_barangs_id" required>
                                 <option value="">--Silahkan Pilih Jenis Barang--</option>
                                 @foreach ($jenisBarangs as $item)
                                     <option value="{{ $item->id }}">{{ $item->Jenis_barang }}</option>
                                 @endforeach
                             </select>
-                            @error('id_jenis_barang')
+                            @error('jenis_barangs_id')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>

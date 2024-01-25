@@ -35,15 +35,15 @@ class SupplierController extends Controller
     {
         //
         $validateData = $request->validate([
-            'nama_supplier' => 'required|max:30',
-            'alamat' => 'required|max:50',
+            'nama_supplier' => 'required|max:50',
+            'alamat' => 'required|max:200',
             'nomor_telepon' => 'required|max:13',
         ],
         [
             'nama_supplier.required' => "Kolom :attribute tidak boleh kosong",
-            'nama_supplier.max' => "Kolom :attribute tidak boleh lebih dari 30 karakter",
+            'nama_supplier.max' => "Kolom :attribute tidak boleh lebih dari 50 karakter",
             'alamat.required' => "Kolom :attribute tidak boleh kosong",
-            'alamat.max' => "Kolom :attribute tidak boleh lebih dari 50 karakter",
+            'alamat.max' => "Kolom :attribute tidak boleh lebih dari 200 karakter",
             'nomor_telepon.required' => "Kolom :attribute tidak boleh kosong",
             'nomor_telepon.max' => "Kolom :attribute tidak boleh lebih dari 13 karakter",
         ]);
@@ -58,7 +58,7 @@ class SupplierController extends Controller
         Session::flash('success','Data berhasil ditambahkan');
 
         // $request->session()->flash('success', 'Data berhasil ditambahkan');
-        return redirect()->back();
+        return redirect()->route('suppliers.index');
     }
 
     /**
@@ -86,17 +86,17 @@ class SupplierController extends Controller
         {
         //
         // dd($request);
-        $this->authorize('edit', $supplier);
+        $this->authorize('update', $supplier);
         $validateData = $request->validate([
-            'nama_supplier' => 'required|max:30',
-            'alamat' => 'required|max:50',
+            'nama_supplier' => 'required|max:50',
+            'alamat' => 'required|max:200',
             'nomor_telepon' => 'required|max:13',
         ],
         [
             'nama_supplier.required' => "Kolom :attribute tidak boleh kosong",
-            'nama_supplier.max' => "Kolom :attribute tidak boleh lebih dari 30 karakter",
+            'nama_supplier.max' => "Kolom :attribute tidak boleh lebih dari 50 karakter",
             'alamat.required' => "Kolom :attribute tidak boleh kosong",
-            'alamat.max' => "Kolom :attribute tidak boleh lebih dari 50 karakter",
+            'alamat.max' => "Kolom :attribute tidak boleh lebih dari 200 karakter",
             'nomor_telepon.required' => "Kolom :attribute tidak boleh kosong",
             'nomor_telepon.max' => "Kolom :attribute tidak boleh lebih dari 13 karakter",
         ]);
@@ -111,7 +111,7 @@ class SupplierController extends Controller
 
         Session::flash('success','Data berhasil diubah');
 
-        return redirect()->route('supplier.index');
+        return redirect()->route('suppliers.index');
         }
     }
 

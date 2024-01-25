@@ -68,7 +68,7 @@ class DetailBarangMasukController extends Controller
 
 
         Session::flash('success', 'Data telah ditambahkan dan stok baranag telah di update');
-        return redirect()->back();
+        return redirect()->route('detail_barang_masuks.index');
     }
 
     /**
@@ -98,7 +98,7 @@ class DetailBarangMasukController extends Controller
     public function update(Request $request, DetailBarangMasuk $detailBarangMasuk)
     {
         //
-         $this->authorize('edit', $detailBarangMasuk);
+         $this->authorize('update', $detailBarangMasuk);
         $validate = $request->validate([
             'nama_barang' => 'required',
             'jumlah' => 'required',
@@ -154,7 +154,7 @@ class DetailBarangMasukController extends Controller
         ]);
 
         Session::flash('success', 'Data berhasil diperbarui');
-        return redirect()->back();
+        return redirect()->route('detail_barang_masuks.index');
 
     }
 
@@ -170,7 +170,7 @@ class DetailBarangMasukController extends Controller
 
         // $getBarang->destroy(['qty' => $delQty]);
         $this->authorize('delete', $detailBarangMasuk);
-        $getBarang = barang::findOrFail($detailBarangMasuk->id_barang);
+        $getBarang = barang::findOrFail($detailBarangMasuk->barangs_id);
         $qtyBarang = $getBarang->qty;
         $qtyBarangMasuk = $detailBarangMasuk->qty;
         $diff = $qtyBarang - $qtyBarangMasuk;

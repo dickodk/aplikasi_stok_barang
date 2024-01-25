@@ -96,13 +96,13 @@
                             <div class="col-lg-8 col-md-6 col-sm-6 col-6">
                                 <div class="form-group">
                                     <label>Nama Customer</label>
-                                    <select class="form-control" fdprocessedid="4k1jpe" name="id_customer" required>
+                                    <select class="form-control" fdprocessedid="4k1jpe" name="customers_id" required>
                                         <option value="">--Nama Customer--</option>
                                         @foreach ($customers as $item)
                                             <option value="{{ $item->id }}">{{ $item->nama_customer }}</option>
                                         @endforeach
                                     </select>
-                                    @error('id_customer')
+                                    @error('customers_id')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -236,12 +236,12 @@
                                     </div>
 
                                     {{-- kolom qty --}}
-                                    <div class="col-lg-2">
+                                    <div class="col-lg-4">
                                         <div class="form-group">
                                             <label for="">Jumlah</label>
                                             <input min="0"
-                                                class="form-control @error('jumlah[]') is-invalid @enderror" type="number"
-                                                placeholder="Jumlab barang keluar" name="jumlah[]"
+                                                class="form-control @error('jumlah[]') is-invalid @enderror"
+                                                type="number" placeholder="Jumlab barang keluar" name="jumlah[]"
                                                 value="{{ old('jumlah[]') }}" required maxlength="4"
                                                 oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                                             @error('jumlah[]')

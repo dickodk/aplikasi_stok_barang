@@ -42,7 +42,7 @@ class BarangController extends Controller
             'nama_barang' => 'required|max:30|unique:barangs,nama_barang',
             'harga_jual' => 'required',
             'qty' => 'required|max:20',
-            'id_jenis_barang' => 'required',
+            'jenis_barangs_id' => 'required',
         ],
         [
             'nama_barang.required' => "Kolom :attribute tidak boleh kosong",
@@ -50,7 +50,7 @@ class BarangController extends Controller
             'harga_jual.required' => "Kolom :attribute tidak boleh kosong",
             'qty.required' => "Kolom :attribute tidak boleh kosong",
             'qty.max' => "Kolom :attribute tidak boleh lebih dari 20 karakter",
-            'id_jenis_barang.required' => "Kolom :attribute tidak boleh kosong",
+            'jenis_barangs_id.required' => "Kolom :attribute tidak boleh kosong",
 
         ]);
 
@@ -59,13 +59,13 @@ class BarangController extends Controller
     $inputData->nama_barang = $validateData['nama_barang'];
     $inputData->harga_jual = $validateData['harga_jual'];
     $inputData->qty = $validateData['qty'];
-    $inputData->jenis_barangs_id = $validateData['id_jenis_barang'];
+    $inputData->jenis_barangs_id = $validateData['jenis_barangs_id'];
         //dd($inputData);
     $inputData->save();
 
     Session::flash('success', 'Data berhasil ditambahkan');
 
-    return redirect()->back();
+    return redirect()->route('barangs.index');
     }
 
     /**
@@ -95,12 +95,12 @@ class BarangController extends Controller
     {
         //
         // dd($request);
-        $this->authorize('edit', $barang);
+        $this->authorize('update', $barang);
         $validateData = $request->validate([
             'nama_barang' => 'required|max:30',
             'harga_jual' => 'required|max:50',
             'qty' => 'required',
-            'id_jenis_barang' => 'required',
+            'jenis_barangs_id' => 'required',
 
         ],
         [
@@ -109,7 +109,7 @@ class BarangController extends Controller
             'harga_jual.required' => "Kolom :attribute tidak boleh kosong",
             'harga_jual.max' => "Kolom :attribute tidak boleh lebih dari 30 karakter",
             'qty.required' => "Kolom :attribute tidak boleh kosong",
-            'id_jenis_barang.required' => "Kolom :attribute tidak boleh kosong",
+            'jenis_barang_id.required' => "Kolom :attribute tidak boleh kosong",
         ]);
 
 
@@ -117,13 +117,13 @@ class BarangController extends Controller
         'nama_barang' => $validateData['nama_barang'],
         'harga_jual' => $validateData['harga_jual'],
         'qty' => $validateData['qty'],
-        'id_jenis_barang' => $validateData['id_jenis_barang'],
+        'jenis_barangs_id' => $validateData['jenis_barangs_id'],
         ]);
 
 
         Session::flash('success','Data berhasil diubah');
 
-        return redirect()->route('barang.index');
+        return redirect()->route('barangs.index');
     }
 
     /**

@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Aplikasi Stok Barang | CV POLONIUM METALINDO</title>
+    <link rel="icon" type="image/jpg" href="{{ asset('img/logo.jpg') }}">
 
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -60,8 +61,7 @@
 
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2"
-                            alt="User Image">
+                        <img src="{{ asset('img/logo.jpg') }}" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
                         <a href="#" class="d-block">{{ Auth::user()->name }}</a>
@@ -78,6 +78,15 @@
                                 <i class="nav-icon fa fa-file-alt"></i>
                                 <p>
                                     Jenis Barang
+                                </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="/barangs" class="nav-link">
+                                <i class="nav-icon fa fa-paperclip"></i>
+                                <p>
+                                    Data Barang
                                 </p>
                             </a>
                         </li>
@@ -102,14 +111,7 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="/barangs" class="nav-link">
-                                <i class="nav-icon fa fa-paperclip"></i>
-                                <p>
-                                    Data Barang
-                                </p>
-                            </a>
-                        </li>
+
                         <li class="nav-item">
                             <a href="/suppliers" class="nav-link">
                                 <i class="nav-icon fa fa-user-plus"></i>
@@ -146,7 +148,8 @@
                                     onclick="event.preventDefault();
                                                         this.closest('form').submit();"
                                     class="dropdown-item">
-                                    <i class="mdi mdi-logout text-primary"></i> {{ __('Log Out') }}
+                                    <i class="mdi mdi-logout text-primary  fa fa-right-from-bracket"></i>
+                                    {{ __('Log Out') }}
                                 </x-dropdown-link>
                             </form>
                         </li>

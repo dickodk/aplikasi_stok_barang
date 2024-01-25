@@ -48,7 +48,7 @@ class BarangKeluarController extends Controller
 // dd("ll");
         // Proses Input Barang Keluar
         $inputBarangKeluar = new BarangKeluar();
-        $inputBarangKeluar->customers_id = $request->id_customer;
+        $inputBarangKeluar->customers_id = $request->customers_id;
         $inputBarangKeluar->tgl_pengiriman = $request->tgl_pengiriman;
         $inputBarangKeluar->no_surat_jalan = $request->no_surat_jalan;
         $inputBarangKeluar->diskon = $request->diskon;
@@ -88,7 +88,8 @@ class BarangKeluarController extends Controller
         }
 
         Session::flash('success', 'Data telah ditambahkan dan stok baranag telah di update');
-        return redirect()->back();
+        return redirect()->route('barang_keluars.index');
+
 
 
     }
@@ -99,7 +100,7 @@ class BarangKeluarController extends Controller
     public function show(BarangKeluar $barangKeluar)
     {
         //
-        $detailBarangKeluar = DetailBarangKeluar::where('id_barang_keluar', $barangKeluar->id)
+        $detailBarangKeluar = DetailBarangKeluar::where('barang_keluars_id', $barangKeluar->id)
         ->orderBy('id', 'asc')
         ->get();
         // dd($detailBarangKeluar);
@@ -116,7 +117,7 @@ class BarangKeluarController extends Controller
         // Pastikan model BarangKeluar ditemukan
         if (!$barangKeluar) {
             return abort(404);
-    }
+        }
 
         $cutomers = Customer::all();
         return view('barang_keluar.edit')
@@ -131,16 +132,19 @@ class BarangKeluarController extends Controller
     public function update(Request $request, BarangKeluar $barangKeluar)
     {
         //
-        $this->authorize('edit', $barangKeluar);
+        $this->authorize('update', $barangKeluar);
          // Pastikan model BarangKeluar ditemukan
         if (!$barangKeluar) {
             return abort(404); // Atau Anda dapat mengarahkannya ke halaman lain sesuai kebutuhan
-    }
+        }
 
         $customers = Customer::all(); // Pastikan "S" besar untuk model Customer
         return view('barang_keluar.edit')
             ->with('customers', $customers)
             ->with('barangKeluar', $barangKeluar);
+
+        return redirect()->route('barang_keluars.index');
+
     }
 
 
@@ -150,9 +154,10 @@ class BarangKeluarController extends Controller
     public function destroy(BarangKeluar $barangKeluar)
     {
         //
-        $detailBarangKeluar = DetailBarangKeluar::where('id_barang_keluar', $barangKeluar->id)->get();
+        $this->authorize('delete', $barangKeluar);
+        $detailBarangKeluar = DetailBarangKeluar::where('barang_keluars_id', $barangKeluar->id)->get();
         foreach ($detailBarangKeluar as $item) {
-            $getBarang = barang::findOrFail($item->id_barang);
+            $getBarang = barang::findOrFail($item->barangs_id);
             $qtyBarang = $getBarang->qty;
 
             $qtyBarangKeluar = $item->qty;
@@ -171,8 +176,7 @@ class BarangKeluarController extends Controller
     public function cetak(BarangKeluar $barangKeluar)
     {
         //
-        $this->authorize('delete', $barangKeluar);
-        $detailBarangKeluar = DetailBarangKeluar::where('id_barang_keluar', $barangKeluar->id)
+        $detailBarangKeluar = DetailBarangKeluar::where('barang_keluars_id', $barangKeluar->id)
         ->orderBy('id', 'asc')
         ->get();
         // dd($detailBarangKeluar);
