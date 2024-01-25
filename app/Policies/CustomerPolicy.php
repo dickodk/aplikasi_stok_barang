@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\User;
 use App\Models\customer;
+use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
-class CutomerPolicy
+class CustomerPolicy
 {
     /**
      * Determine whether the user can view any models.
@@ -38,7 +38,8 @@ class CutomerPolicy
     public function update(User $user, customer $customer): bool
     {
         //
-        return $user->role == 'owner';
+         return $user->role == 'owner';
+
     }
 
     /**
@@ -48,6 +49,7 @@ class CutomerPolicy
     {
         //
         return $user->role == 'owner';
+
     }
 
     /**
