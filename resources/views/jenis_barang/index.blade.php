@@ -9,12 +9,6 @@
                     <div class="col-sm-6">
                         <h1 class="m-0">Data Jenis Barang</h1>
                     </div>
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">1</a></li>
-                            <li class="breadcrumb-item active">2</li>
-                        </ol>
-                    </div>
                 </div>
             </div>
         </div>
@@ -42,25 +36,30 @@
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
+                                    <th>No. </th>
                                     <th>Jenis Barang</th>
-                                    <th>Action</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @if (count($jenisBarangs) > 0)
+                                    @php
+                                        $i = 1;
+                                    @endphp
                                     @foreach ($jenisBarangs as $item)
                                         <tr>
+                                            <td>{{ $i++ }}</td>
                                             <td>{{ $item->Jenis_barang }}</td>
                                             <td>
                                                 {{-- Button Ubah --}}
 
                                                 <a class="btn btn-warning mr-2"
-                                                    href="{{ route('jenis_barangs.edit', ['jenis_barang' => $item->id]) }}">Edit</a>
+                                                    href="{{ route('jenis_barangs.edit', ['jenis_barang' => $item->id]) }}">Ubah</a>
 
                                                 {{-- Button Hapus --}}
                                                 <button class="btn btn-danger btn-hapus" data-id="{{ $item->id }}"
                                                     data-toggle="modal" data-target="#modal-sm"
-                                                    data-jenisBarang="{{ $item->Jenis_barang }}">Delete</button>
+                                                    data-jenisBarang="{{ $item->Jenis_barang }}">Hapus</button>
 
                                             </td>
 
@@ -72,13 +71,6 @@
                                     </tr>
                                 @endif
                             </tbody>
-                            {{-- <tfoot>
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Jenis Barang</th>
-                                    <th>Action</th>
-                                </tr>
-                            </tfoot> --}}
                         </table>
                     </div>
 

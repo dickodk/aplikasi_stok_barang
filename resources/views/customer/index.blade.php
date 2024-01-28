@@ -9,12 +9,6 @@
                     <div class="col-sm-6">
                         <h1 class="m-0">Customer</h1>
                     </div>
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">1</a></li>
-                            <li class="breadcrumb-item active">2</li>
-                        </ol>
-                    </div>
                 </div>
             </div>
         </div>
@@ -43,17 +37,22 @@
                             <thead>
                                 <tr>
                                     {{-- <th>Id</th> --}}
+                                    <th>No. </th>
                                     <th>Nama Customer</th>
                                     <th>Alamat</th>
                                     <th>Nomor Telepon</th>
-                                    <th>Action</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @if (count($customers) > 0)
+                                    @php
+                                        $i = 1;
+                                    @endphp
                                     @foreach ($customers as $item)
                                         <tr>
                                             {{-- <td>{{ $item->id }}</td> --}}
+                                            <td>{{ $i++ }}</td>
                                             <td>{{ $item->nama_customer }}</td>
                                             <td>{{ $item->alamat }}</td>
                                             <td>{{ $item->nomor_telepon }}</td>
@@ -61,12 +60,12 @@
                                                 {{-- Button Ubah --}}
 
                                                 <a class="btn btn-warning mr-2"
-                                                    href="{{ route('customers.edit', ['customer' => $item->id]) }}">Edit</a>
+                                                    href="{{ route('customers.edit', ['customer' => $item->id]) }}">Ubah</a>
 
                                                 {{-- Button Hapus --}}
                                                 <button class="btn btn-danger btn-hapus" data-id="{{ $item->id }}"
                                                     data-toggle="modal" data-target="#modal-sm"
-                                                    data-customer="{{ $item->customer }}">Delete</button>
+                                                    data-nama="{{ $item->nama_customer }}">Hapus</button>
 
                                             </td>
 
@@ -120,7 +119,7 @@
             let id = $(this).attr('data-id');
             $('#formDelete').attr('action', '/customers/' + id);
 
-            let customer = $(this).attr('data-customer');
+            let customer = $(this).attr('data-nama');
             $('#mb-konfirmasi').text("Apakah anda yakin ingin menghapus data : " + customer + " ?")
         })
 

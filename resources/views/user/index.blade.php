@@ -7,13 +7,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Data Admin</h1>
-                    </div>
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">1</a></li>
-                            <li class="breadcrumb-item active">2</li>
-                        </ol>
+                        <h1 class="m-0">Data User</h1>
                     </div>
                 </div>
             </div>
@@ -26,7 +20,7 @@
                 {{-- card data table --}}
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Daftar Data Admin</h3>
+                        <h3 class="card-title">Daftar Data User</h3>
                     </div>
 
                     <div class="card-body">
@@ -42,6 +36,7 @@
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
+                                    <th>No. </th>
                                     <th>Nama User</th>
                                     <th>Email</th>
                                     <th>Role</th>
@@ -50,8 +45,12 @@
                             </thead>
                             <tbody>
                                 @if (count($users) > 0)
+                                    @php
+                                        $i = 1;
+                                    @endphp
                                     @foreach ($users as $item)
                                         <tr>
+                                            <td>{{ $i++ }}</td>
                                             <td>{{ $item->name }}</td>
                                             <td>{{ $item->email }}</td>
                                             <td>{{ $item->role }}</td>
@@ -60,7 +59,7 @@
                                                 {{-- Button Hapus --}}
                                                 <button class="btn btn-danger btn-hapus" data-id="{{ $item->id }}"
                                                     data-toggle="modal" data-target="#modal-sm"
-                                                    data-user="{{ $item->user }}">Delete</button>
+                                                    data-user="{{ $item->name }}">Hapus</button>
 
                                             </td>
 

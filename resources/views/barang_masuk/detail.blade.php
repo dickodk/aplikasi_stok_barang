@@ -8,12 +8,6 @@
                     <div class="col-sm-6">
                         <h1>Detail Barang Masuk</h1>
                     </div>
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Blank Page</li>
-                        </ol>
-                    </div>
                 </div>
             </div>
         </section>
@@ -49,6 +43,7 @@
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
                             <tr>
+                                <th>No. </th>
                                 <th>Nama Barang</th>
                                 <th>Jumlah Masuk</th>
                                 <th>Harga Beli Satuan</th>
@@ -57,9 +52,13 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @php
+                                $i = 1;
+                            @endphp
 
                             @foreach ($detailBarangMasuk as $item)
                                 <tr>
+                                    <td>{{ $i++ }}</td>
                                     <td>{{ $item->barangs->nama_barang }}</td>
                                     <td>{{ number_format($item->qty, 0) }}</td>
                                     <td>Rp {{ number_format($item->harga_beli, 0) }}</td>
@@ -68,12 +67,12 @@
                                         {{-- Button Detaol --}}
 
                                         <a class="btn btn-warning mr-2"
-                                            href="{{ route('detail_barang_masuks.edit', ['detail_barang_masuk' => $item->id]) }}">Edit</a>
+                                            href="{{ route('detail_barang_masuks.edit', ['detail_barang_masuk' => $item->id]) }}">Ubah</a>
 
                                         {{-- Button Hapus --}}
                                         <button class="btn btn-danger btn-hapus" data-id="{{ $item->id }}"
                                             data-toggle="modal" data-target="#modal-sm"
-                                            data-barang="{{ $item->barangs->nama_barang }}">Delete</button>
+                                            data-barang="{{ $item->barangs->nama_barang }}">Hapus</button>
 
                                     </td>
                                 </tr>

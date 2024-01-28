@@ -9,12 +9,6 @@
                     <div class="col-sm-6">
                         <h1 class="m-0">Data Barang Masuk</h1>
                     </div>
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">1</a></li>
-                            <li class="breadcrumb-item active">2</li>
-                        </ol>
-                    </div>
                 </div>
             </div>
         </div>
@@ -43,17 +37,22 @@
                             <thead>
                                 <tr>
                                     {{-- <th>Id</th> --}}
+                                    <th>No. </th>
                                     <th>Nama Supplier</th>
                                     <th>Tanggal Terima</th>
-                                    <th>Action</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @if (count($barang_masuks) > 0)
+                                    @php
+                                        $i = 1;
+                                    @endphp
                                     @foreach ($barang_masuks as $item)
                                         {{-- @dd($item) --}}
 
                                         <tr>
+                                            <td>{{ $i++ }}</td>
                                             {{-- <td>{{ $item->id }}</td> --}}
                                             <td>{{ $item->supplier->nama_supplier }}</td>
                                             <td>{{ $item->tgl_penerimaan }}</td>
@@ -66,7 +65,7 @@
                                                 {{-- Button Hapus --}}
                                                 <button class="btn btn-danger btn-hapus" data-id="{{ $item->id }}"
                                                     data-toggle="modal" data-target="#modal-sm"
-                                                    data-sup="{{ $item->supplier->nama_supplier }}">Delete</button>
+                                                    data-sup="{{ $item->supplier->nama_supplier }}">Hapus</button>
 
                                             </td>
 

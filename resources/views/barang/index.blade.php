@@ -9,12 +9,6 @@
                     <div class="col-sm-6">
                         <h1 class="m-0">Data Barang</h1>
                     </div>
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">1</a></li>
-                            <li class="breadcrumb-item active">2</li>
-                        </ol>
-                    </div>
                 </div>
             </div>
         </div>
@@ -43,18 +37,23 @@
                             <thead>
                                 <tr>
                                     {{-- <th>Id</th> --}}
+                                    <th>No. </th>
                                     <th>Nama barang</th>
                                     <th>Harga Jual</th>
                                     <th>qty</th>
                                     <th>Jenis Barang</th>
-                                    <th>Action</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @if (count($barangs) > 0)
+                                    @php
+                                        $i = 1;
+                                    @endphp
                                     @foreach ($barangs as $item)
                                         <tr>
                                             {{-- <td>{{ $item->id }}</td> --}}
+                                            <td>{{ $i++ }}</td>
                                             <td>{{ $item->nama_barang }}</td>
                                             <td>Rp {{ number_format($item->harga_jual, 0) }}</td>
                                             <td>{{ number_format($item->qty, 0) }}</td>
@@ -64,12 +63,12 @@
                                                 {{-- Button Ubah --}}
 
                                                 <a class="btn btn-warning mr-2"
-                                                    href="{{ route('barangs.edit', ['barang' => $item->id]) }}">Edit</a>
+                                                    href="{{ route('barangs.edit', ['barang' => $item->id]) }}">Ubah</a>
 
                                                 {{-- Button Hapus --}}
                                                 <button class="btn btn-danger btn-hapus" data-id="{{ $item->id }}"
                                                     data-toggle="modal" data-target="#modal-sm"
-                                                    data-barang="{{ $item->barang }}">Delete</button>
+                                                    data-barang="{{ $item->nama_barang }}">Hapus</button>
 
                                             </td>
 

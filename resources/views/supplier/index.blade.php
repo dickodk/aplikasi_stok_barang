@@ -9,12 +9,6 @@
                     <div class="col-sm-6">
                         <h1 class="m-0">Supplier</h1>
                     </div>
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">1</a></li>
-                            <li class="breadcrumb-item active">2</li>
-                        </ol>
-                    </div>
                 </div>
             </div>
         </div>
@@ -43,16 +37,21 @@
                             <thead>
                                 <tr>
                                     {{-- <th>Id</th> --}}
+                                    <th>No. </th>
                                     <th>Nama Supplier</th>
                                     <th>Alamat</th>
                                     <th>Nomor Telepon</th>
-                                    <th>Action</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @if (count($suppliers) > 0)
+                                    @php
+                                        $i = 1;
+                                    @endphp
                                     @foreach ($suppliers as $item)
                                         <tr>
+                                            <td>{{ $i++ }}</td>
                                             {{-- <td>{{ $item->id }}</td> --}}
                                             <td>{{ $item->nama_supplier }}</td>
                                             <td>{{ $item->alamat }}</td>
@@ -61,12 +60,12 @@
                                                 {{-- Button Ubah --}}
 
                                                 <a class="btn btn-warning mr-2"
-                                                    href="{{ route('suppliers.edit', ['supplier' => $item->id]) }}">Edit</a>
+                                                    href="{{ route('suppliers.edit', ['supplier' => $item->id]) }}">Ubah</a>
 
                                                 {{-- Button Hapus --}}
                                                 <button class="btn btn-danger btn-hapus" data-id="{{ $item->id }}"
                                                     data-toggle="modal" data-target="#modal-sm"
-                                                    data-supplier="{{ $item->supplier }}">Delete</button>
+                                                    data-supplier="{{ $item->nama_supplier }}">Hapus</button>
 
                                             </td>
 

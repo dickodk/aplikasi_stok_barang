@@ -39,7 +39,7 @@ Route::get('/', function () {
 
 // Route::get('suppliers/dashboard', [SupplierController::class, 'countData'])->name('suppliers.dashboard');
 
-Route::resource('dashboard', DashboardController::class);
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -47,18 +47,22 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-;
-Route::resource('jenis_barangs', JenisBarangController::class);
-Route::resource('barangs', BarangController::class);
-Route::resource('suppliers', SupplierController::class);
-Route::resource('customers', CustomerController::class);
-Route::resource('barang_masuks', BarangMasukController::class);
-Route::resource('barang_keluars', BarangKeluarController::class);
-Route::resource('detail_barang_masuks', DetailBarangMasukController::class);
-Route::resource('detail_barang_keluars', DetailBarangKeluarController::class);
-Route::resource('users', UserController::class);
+Route::middleware(['auth', 'verified', 'prevent-back-history'])->group(function () {
+    Route::resource('jenis_barangs', JenisBarangController::class);
+    Route::resource('barangs', BarangController::class);
+    Route::resource('suppliers', SupplierController::class);
+    Route::resource('customers', CustomerController::class);
+    Route::resource('barang_masuks', BarangMasukController::class);
+    Route::resource('barang_keluars', BarangKeluarController::class);
+    Route::resource('detail_barang_masuks', DetailBarangMasukController::class);
+    Route::resource('detail_barang_keluars', DetailBarangKeluarController::class);
+    Route::resource('users', UserController::class);
+    Route::resource('dashboard', DashboardController::class);
+});
 
 
-Route::get('/cetak/{barang_keluar}', [BarangKeluarController::class, 'cetak'])->name('cetak');
+
+
+Route::get('/cetak/{barang_keluar}', [BarangKeluarController::class, 'cetak'])->name('cetak')->middleware(['auth', 'verified', 'prevent-back-history']);
 
 require __DIR__.'/auth.php';

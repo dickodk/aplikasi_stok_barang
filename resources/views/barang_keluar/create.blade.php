@@ -8,12 +8,6 @@
                     <div class="col-sm-6">
                         <h1>Barang Keluar</h1>
                     </div>
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Blank Page</li>
-                        </ol>
-                    </div>
                 </div>
             </div>
         </section>
@@ -165,8 +159,8 @@
                                         <div class="form-group">
                                             <label for="">Jumlah</label>
                                             <input min="0"
-                                                class="form-control @error('jumlah[]') is-invalid @enderror"
-                                                type="number" placeholder="Jumlab barang keluar" name="jumlah[]"
+                                                class="form-control @error('jumlah[]') is-invalid @enderror" type="number"
+                                                placeholder="Jumlab barang keluar" name="jumlah[]"
                                                 value="{{ old('jumlah[]') }}" required maxlength="4"
                                                 oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                                             @error('jumlah[]')

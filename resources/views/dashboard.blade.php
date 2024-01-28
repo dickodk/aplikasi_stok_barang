@@ -6,14 +6,10 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Dashboard</h1>
-                    </div>
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item active">Dashboard</li>
-                        </ol>
-                    </div>
+                        <h2 class="m-1"><strong><span style="font-family: Time News Roman; color: #000000;">Beranda</span>
+                            </strong></h2>
 
+                    </div>
                 </div>
             </div>
         </div>
@@ -32,7 +28,7 @@
                             <div class="icon">
                                 <i class="ion ion-bag"></i>
                             </div>
-                            <a href="/suppliers" class="small-box-footer">More info <i
+                            <a href="/suppliers" class="small-box-footer">Info Lebih Lanjut <i
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
@@ -47,7 +43,7 @@
                             <div class="icon">
                                 <i class="ion ion-stats-bars"></i>
                             </div>
-                            <a href="/customers" class="small-box-footer">More info <i
+                            <a href="/customers" class="small-box-footer">Info Lebih Lanjut <i
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
@@ -62,7 +58,7 @@
                             <div class="icon">
                                 <i class="ion ion-person-add"></i>
                             </div>
-                            <a href="/barang_masuks" class="small-box-footer">More info <i
+                            <a href="/barang_masuks" class="small-box-footer">Info Lebih Lanjut <i
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
@@ -77,7 +73,7 @@
                             <div class="icon">
                                 <i class="ion ion-pie-graph"></i>
                             </div>
-                            <a href="/barang_keluars" class="small-box-footer">More info <i
+                            <a href="/barang_keluars" class="small-box-footer">Info Lebih Lanjut <i
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
