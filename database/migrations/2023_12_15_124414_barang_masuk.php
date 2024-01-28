@@ -14,7 +14,7 @@ return new class extends Migration
             $table->date('tgl_penerimaan')->nullable();
             $table->date('qty')->nullable();
             $table->timestamps();
-            $table->foreignId('suppliers_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('suppliers_id')->constrained()->onDelete('restrict')->onUpdate('restrict');
         });
     }
 

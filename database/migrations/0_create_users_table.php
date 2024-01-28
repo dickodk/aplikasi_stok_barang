@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             // $table->string('role')->default('owner');
-            $table->enum('role', ['Leader', 'Admin'])->nullable();
+            $table->enum('role', ['owner', 'admin'])->nullable();
             $table->timestamps();
         });
     }

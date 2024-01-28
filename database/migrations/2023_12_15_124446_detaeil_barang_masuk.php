@@ -15,8 +15,8 @@ return new class extends Migration
             $table->integer('qty')->nullable();
             $table->bigInteger('harga_beli')->nullable();
             $table->timestamps();
-            $table->foreignId('barang_masuks_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('barangs_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('barang_masuks_id')->constrained()->onDelete('restrict')->onUpdate('restrict');
+            $table->foreignId('barangs_id')->constrained()->onDelete('restrict')->onUpdate('restrict');
         });
     }
 

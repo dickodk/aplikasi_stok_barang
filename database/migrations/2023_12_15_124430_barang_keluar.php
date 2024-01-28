@@ -15,7 +15,7 @@ return new class extends Migration
             $table->string('no_surat_jalan', 50);
             $table->integer('diskon');
             $table->timestamps();
-            $table->foreignId('customers_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('customers_id')->constrained()->onDelete('restrict')->onUpdate('restrict');
 
         });
     }
