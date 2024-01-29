@@ -41,7 +41,10 @@
                                     <th>Nama Supplier</th>
                                     <th>Alamat</th>
                                     <th>Nomor Telepon</th>
-                                    <th>Aksi</th>
+                                    @if (Auth::user()->role === 'owner')
+                                        <th>Aksi</th>
+                                    @endif
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -56,18 +59,20 @@
                                             <td>{{ $item->nama_supplier }}</td>
                                             <td>{{ $item->alamat }}</td>
                                             <td>{{ $item->nomor_telepon }}</td>
-                                            <td>
-                                                {{-- Button Ubah --}}
+                                            @if (Auth::user()->role === 'owner')
+                                                <td>
+                                                    {{-- Button Ubah --}}
 
-                                                <a class="btn btn-warning mr-2"
-                                                    href="{{ route('suppliers.edit', ['supplier' => $item->id]) }}">Ubah</a>
+                                                    <a class="btn btn-warning mr-2"
+                                                        href="{{ route('suppliers.edit', ['supplier' => $item->id]) }}">Ubah</a>
 
-                                                {{-- Button Hapus --}}
-                                                <button class="btn btn-danger btn-hapus" data-id="{{ $item->id }}"
-                                                    data-toggle="modal" data-target="#modal-sm"
-                                                    data-supplier="{{ $item->nama_supplier }}">Hapus</button>
+                                                    {{-- Button Hapus --}}
+                                                    <button class="btn btn-danger btn-hapus" data-id="{{ $item->id }}"
+                                                        data-toggle="modal" data-target="#modal-sm"
+                                                        data-supplier="{{ $item->nama_supplier }}">Hapus</button>
 
-                                            </td>
+                                                </td>
+                                            @endif
 
                                         </tr>
                                     @endforeach

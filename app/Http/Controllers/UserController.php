@@ -64,7 +64,7 @@ class UserController extends Controller
         Session::flash('success','Data berhasil ditambahkan');
 
         // $request->session()->flash('success', 'Data berhasil ditambahkan');
-        return redirect()->back();
+        return redirect()->route('users.index');
     }
 
     /**

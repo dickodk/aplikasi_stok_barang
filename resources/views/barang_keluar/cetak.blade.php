@@ -6,7 +6,6 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Cetak Surat Jalan</h1>
                     </div>
                     {{-- <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -23,6 +22,7 @@
             {{-- <div class="card"> --}}
             <div class="card-header">
                 <div class="row">
+                    <h1>Cetak Surat Jalan</h1>
 
                     <div class="col-md-6">
                         <dl class="row">
@@ -98,7 +98,7 @@
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td colspan="3">
+                            <td colspan="4" style="text-align: center;">
                                 Jumlah
                             </td>
                             <td>
@@ -106,7 +106,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="3">
+                            <td colspan="4" style="text-align: center;">
                                 diskon ({{ number_format($barangKeluar->diskon, 0) }} %)
                             </td>
                             <td>
@@ -114,7 +114,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="3">
+                            <td colspan="4" style="text-align: center;">
                                 ppn 10%
                             </td>
                             <td>
@@ -122,7 +122,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="3">
+                            <td colspan="4" style="text-align: center;">
                                 Total Harga
                             </td>
                             <td>

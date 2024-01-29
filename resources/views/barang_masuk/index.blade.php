@@ -57,15 +57,17 @@
                                             <td>{{ $item->supplier->nama_supplier }}</td>
                                             <td>{{ $item->tgl_penerimaan }}</td>
                                             <td>
-                                                {{-- Button Detaol --}}
+                                                {{-- Button Detail --}}
 
                                                 <a class="btn btn-info mr-2"
                                                     href="{{ route('barang_masuks.show', ['barang_masuk' => $item->id]) }}">Detail</a>
 
-                                                {{-- Button Hapus --}}
-                                                <button class="btn btn-danger btn-hapus" data-id="{{ $item->id }}"
-                                                    data-toggle="modal" data-target="#modal-sm"
-                                                    data-sup="{{ $item->supplier->nama_supplier }}">Hapus</button>
+                                                @can('delete', $item)
+                                                    {{-- Button Hapus --}}
+                                                    <button class="btn btn-danger btn-hapus" data-id="{{ $item->id }}"
+                                                        data-toggle="modal" data-target="#modal-sm"
+                                                        data-sup="{{ $item->supplier->nama_supplier }}">Hapus</button>
+                                                @endcan
 
                                             </td>
 

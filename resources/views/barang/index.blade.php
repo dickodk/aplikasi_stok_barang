@@ -42,7 +42,9 @@
                                     <th>Harga Jual</th>
                                     <th>qty</th>
                                     <th>Jenis Barang</th>
-                                    <th>Aksi</th>
+                                    @if (Auth::user()->role === 'owner')
+                                        <th>Aksi</th>
+                                    @endif
                                 </tr>
                             </thead>
                             <tbody>
@@ -59,18 +61,27 @@
                                             <td>{{ number_format($item->qty, 0) }}</td>
                                             <td>{{ $item->jenis_barang->Jenis_barang }}</td>
 
-                                            <td>
-                                                {{-- Button Ubah --}}
+                                            @if (Auth::user()->role === 'owner')
+                                                <td>
+                                                    @can('update', $post)
+                                                        {{-- Button Ubah --}}
 
-                                                <a class="btn btn-warning mr-2"
-                                                    href="{{ route('barangs.edit', ['barang' => $item->id]) }}">Ubah</a>
+                                                        <a class="btn btn-warning mr-2"
+                                                            href="{{ route('barangs.edit', ['barang' => $item->id]) }}">Ubah</a>
+                                                    @endcan
 
-                                                {{-- Button Hapus --}}
-                                                <button class="btn btn-danger btn-hapus" data-id="{{ $item->id }}"
-                                                    data-toggle="modal" data-target="#modal-sm"
-                                                    data-barang="{{ $item->nama_barang }}">Hapus</button>
+                                                    @can('delete', $post)
+                                                        {{-- Button Hapus --}}
+                                                        <button class="btn btn-danger btn-hapus" data-id="{{ $item->id }}"
+                                                            data-toggle="modal" data-target="#modal-sm"
+                                                            data-barang="{{ $item->nama_barang }}">Hapus</button>
+                                                    @endcan
 
-                                            </td>
+
+                                                </td>
+                                            @endif
+
+
 
                                         </tr>
                                     @endforeach

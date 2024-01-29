@@ -67,10 +67,12 @@
                                                 <a class="btn btn-info mr-2"
                                                     href="{{ route('barang_keluars.show', ['barang_keluar' => $item->id]) }}">Detail</a>
 
-                                                {{-- Button Hapus --}}
-                                                <button class="btn btn-danger btn-hapus" data-id="{{ $item->id }}"
-                                                    data-toggle="modal" data-target="#modal-sm"
-                                                    data-sup="{{ $item->customer->nama_customer }}">Hapus</button>
+                                                @can('delete', $item)
+                                                    {{-- Button Hapus --}}
+                                                    <button class="btn btn-danger btn-hapus" data-id="{{ $item->id }}"
+                                                        data-toggle="modal" data-target="#modal-sm"
+                                                        data-sup="{{ $item->customer->nama_customer }}">Hapus</button>
+                                                @endcan
 
                                             </td>
 

@@ -55,7 +55,9 @@
                                 <th>Jumlah Keluar</th>
                                 <th>Harga Jual Satuan</th>
                                 <th>Total Harga</th>
-                                <th>Aksi</th>
+                                @if (Auth::user()->role === 'owner')
+                                    <th>Aksi</th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody>
@@ -72,25 +74,31 @@
                                     <td>{{ number_format($item->qty, 0) }}</td>
                                     <td>Rp {{ number_format($item->harga_jual, 0) }}</td>
                                     <td>Rp {{ number_format($item->qty * $item->harga_jual, 0) }}</td>
+                                    @if (Auth::user()->role === 'owner')
+                                        <td>
 
-                                    <td>
-                                        {{-- Button Detail --}}
+                                            @can('update', $item)
+                                                {{-- Button Detail Ubah --}}
+                                                <a class="btn btn-warning mr-2"
+                                                    href="{{ route('detail_barang_keluars.edit', ['detail_barang_keluar' => $item->id]) }}">Ubah</a>
+                                            @endcan
 
-                                        <a class="btn btn-warning mr-2"
-                                            href="{{ route('detail_barang_keluars.edit', ['detail_barang_keluar' => $item->id]) }}">Ubah</a>
+                                            @can('delete', $item)
+                                                {{-- Button Hapus --}}
+                                                <button class="btn btn-danger btn-hapus" data-id="{{ $item->id }}"
+                                                    data-toggle="modal" data-target="#modal-sm"
+                                                    data-barang="{{ $item->barang->nama_barang }}">Hapus</button>
+                                            @endcan
 
-                                        {{-- Button Hapus --}}
-                                        <button class="btn btn-danger btn-hapus" data-id="{{ $item->id }}"
-                                            data-toggle="modal" data-target="#modal-sm"
-                                            data-barang="{{ $item->barang->nama_barang }}">Hapus</button>
+                                        </td>
+                                    @endif
 
-                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="3">
+                                <td colspan="4" style="text-align: center;">
                                     Jumlah
                                 </td>
                                 <td>
@@ -98,7 +106,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="3">
+                                <td colspan="4" style="text-align: center;">
                                     diskon ({{ number_format($barangKeluar->diskon, 0) }} %)
                                 </td>
                                 <td>
@@ -106,7 +114,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="3">
+                                <td colspan="4" style="text-align: center;">
                                     ppn 10%
                                 </td>
                                 <td>
@@ -114,7 +122,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="3">
+                                <td colspan="4" style="text-align: center;">
                                     Total Harga
                                 </td>
                                 <td>
