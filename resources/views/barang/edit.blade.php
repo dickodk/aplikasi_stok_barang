@@ -54,7 +54,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="">qty</label>
+                            <label for="">Jumlah</label>
                             <input class="form-control @error('qty') is-invalid
                             @enderror"
                                 type="number" placeholder="qty; Maximal 255 angka" name="qty"

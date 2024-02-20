@@ -53,6 +53,8 @@
 
                         </div>
 
+
+
                         <div class="form-group">
                             <label for="">Alamat</label>
                             <input class="form-control @error('alamat') is-invalid
@@ -62,6 +64,28 @@
                             @error('alamat')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
+                        </div>
+
+                        <div class="form-group">
+
+                            <label for="">Status</label>
+
+                            <select class="form-control js-example-basic-single" fdprocessedid="4k1jpe" name="status"
+                                required>
+                                <option value="">--Status--</option>
+                                @if ($customer->status == 'Bermitra')
+                                    <option value="Bermitra" selected>Bermitra</option>
+                                    <option value="Tidak Bermitra Lagi">Tidak Bermitra Lagi</option>
+                                @else
+                                    <option value="Bermitra">Bermitra</option>
+                                    <option value="Tidak Bermitra Lagi" selected>Tidak Bermitra Lagi</option>
+                                @endif
+
+                            </select>
+                            @error('customers_id')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+
                         </div>
 
                         <div class="form-group">
@@ -77,6 +101,10 @@
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
+
+
+
+
                         <div class="form-group">
                             <button class="btn btn-success" type="submit">Perbarui</button>
                         </div>

@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\barang;
+use App\Models\BarangMasuk;
+use App\Models\DetailBarangKeluar;
+use App\Models\DetailBarangMasuk;
 use App\Models\JenisBarang;
+use App\Models\supplier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -133,8 +137,17 @@ class BarangController extends Controller
     {
         //
         $this->authorize('delete', $barang);
+        $check = DetailBarangMasuk::where('barangs_id', $barang['id'])->first();
+
+        if($check){
+        Session::flash('danger','Data tidak diizinkan dihapus');
+
+        }else{
         $barang->delete();
+
         Session::flash('success','Data berhasil dihapus');
+        }
+
         return redirect()->back();
     }
 }

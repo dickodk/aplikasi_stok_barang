@@ -53,7 +53,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="">qty</label>
+                            <label for="">Jumlah</label>
                             <input min="0"
                                 class="form-control @error('qty') is-invalid
                             @enderror"

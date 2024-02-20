@@ -90,6 +90,7 @@ class CustomerController extends Controller
             'nama_customer' => 'required|max:50',
             'alamat' => 'required|max:200',
             'nomor_telepon' => 'required|max:15',
+            'status' => 'required|max:50'
         ],
         [
             'nama_customer.required' => "Kolom :attribute tidak boleh kosong",
@@ -98,6 +99,7 @@ class CustomerController extends Controller
             'alamat.max' => "Kolom :attribute tidak boleh lebih dari 200 karakter",
             'nomor_telepon.required' => "Kolom :attribute tidak boleh kosong",
             'nomor_telepon.max' => "Kolom :attribute tidak boleh lebih dari 15 karakter",
+            'status.required' => "Kolom :attribute tidak boleh kosong",
         ]);
 
 
@@ -105,12 +107,14 @@ class CustomerController extends Controller
         'nama_customer' => $validateData['nama_customer'],
         'alamat' => $validateData['alamat'],
         'nomor_telepon' => $validateData['nomor_telepon'],
+        'status' =>  $validateData['status'],
         ]);
 
 
         Session::flash('success','Data berhasil diubah');
 
         return redirect()->route('customers.index');
+
         }
     }
 

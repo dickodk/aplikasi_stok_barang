@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\barang;
 use App\Models\JenisBarang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -102,9 +103,18 @@ class JenisBarangController extends Controller
     {
         //
         $this->authorize('delete', $jenisBarang);
+        $check = barang::where('jenis_barangs_id', $jenisBarang['id'])->first();
+        // dd($check);
+
+        if($check){
+        Session::flash('danger','Data tidak diizinkan dihapus');
+
+        }else{
         $jenisBarang->delete();
 
         Session::flash('success','Data berhasil dihapus');
+        }
+
         return redirect()->back();
         }
 }

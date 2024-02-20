@@ -54,6 +54,30 @@
                         </div>
 
                         <div class="form-group">
+
+                            <label for="">Status</label>
+
+                            <select class="form-control js-example-basic-single" fdprocessedid="4k1jpe" name="status"
+                                required>
+                                <option value="">--Status--</option>
+                                @if ($supplier->status == 'Aktif')
+                                    <option value="Aktif" selected>Aktif</option>
+                                    <option value="Tidak Aktif">Tidak Aktif</option>
+                                @else
+                                    <option value="Aktif">Aktif</option>
+                                    <option value="Tidak Aktif" selected>Tidak Aktif</option>
+                                @endif
+
+                            </select>
+                            @error('suppliers_id')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+
+                        </div>
+
+
+
+                        <div class="form-group">
                             <label for="">Alamat</label>
                             <input class="form-control @error('alamat') is-invalid
                             @enderror"

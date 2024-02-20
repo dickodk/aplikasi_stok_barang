@@ -22,33 +22,31 @@
             {{-- <div class="card"> --}}
             <div class="card-header">
                 <div class="row">
-                    <h1>Cetak Surat Jalan</h1>
-
-                    <div class="col-md-6">
-                        <dl class="row">
-                            <dt class="col-sm-6">Tanggal Beli </dt>
-                            <dd class="col-sm-6">{{ date('d/m/Y', strtotime($barangKeluar->tgl_beli)) }}</dd>
-
-                            <dt class="col-sm-6">Customer </dt>
-                            <dd class="col-sm-6">{{ $barangKeluar->customer->nama_customer }}</dd>
-
-                            <dt class="col-sm-6">Tanggal Pengiriman </dt>
-                            <dd class="col-sm-6">{{ date('d/m/Y', strtotime($barangKeluar->tgl_pengiriman)) }}</dd>
-                        </dl>
+                    <div class="col-md-12 text-center">
+                        <h1>CV POLONIUM METALINDO</h1>
                     </div>
+
                     <div class="col-md-6">
                         <dl class="row">
                             <dt class="col-sm-6">No. Surat Jalan </dt>
                             <dd class="col-sm-6">{{ $barangKeluar->no_surat_jalan }}</dd>
 
-                            <dt class="col-sm-6">No. Telp </dt>
-                            <dd class="col-sm-6">{{ $barangKeluar->customer->nomor_telepon }}</dd>
+                            <dt class="col-sm-6">Customer </dt>
+                            <dd class="col-sm-6">{{ $barangKeluar->customer->nama_customer }}</dd>
 
                             <dt class="col-sm-6">Alamat </dt>
                             <dd class="col-sm-6">{{ $barangKeluar->customer->alamat }}</dd>
+
+                            <dt class="col-sm-6">No. Telp </dt>
+                            <dd class="col-sm-6">{{ $barangKeluar->customer->nomor_telepon }}</dd>
+
+                            <dt class="col-sm-6">Tanggal Beli </dt>
+                            <dd class="col-sm-6">{{ date('d/m/Y', strtotime($barangKeluar->tgl_beli)) }}</dd>
+
+                            <dt class="col-sm-6">Tanggal Pengiriman </dt>
+                            <dd class="col-sm-6">{{ date('d/m/Y', strtotime($barangKeluar->tgl_pengiriman)) }}</dd>
                         </dl>
                     </div>
-                    {{-- </div> --}}
 
                 </div>
             </div>
@@ -102,23 +100,23 @@
                                 Jumlah
                             </td>
                             <td>
-                                {{ number_format($total, 0) }}
+                                Rp {{ number_format($total, 0) }}
                             </td>
                         </tr>
                         <tr>
                             <td colspan="4" style="text-align: center;">
-                                diskon ({{ number_format($barangKeluar->diskon, 0) }} %)
+                                Diskon ({{ number_format($barangKeluar->diskon, 0) }} %)
                             </td>
                             <td>
-                                {{ number_format(($barangKeluar->diskon / 100) * $total, 0) }}
+                                Rp {{ number_format(($barangKeluar->diskon / 100) * $total, 0) }}
                             </td>
                         </tr>
                         <tr>
                             <td colspan="4" style="text-align: center;">
-                                ppn 10%
+                                PPN 10%
                             </td>
                             <td>
-                                {{ number_format((10 / 100) * ($total - ($barangKeluar->diskon / 100) * $total)) }}
+                                Rp {{ number_format((10 / 100) * ($total - ($barangKeluar->diskon / 100) * $total)) }}
                             </td>
                         </tr>
                         <tr>
@@ -126,16 +124,45 @@
                                 Total Harga
                             </td>
                             <td>
+                                Rp
                                 {{ number_format($total - ($barangKeluar->diskon / 100) * $total + (10 / 100) * ($total - ($barangKeluar->diskon / 100) * $total)) }}
 
                             </td>
                         </tr>
                     </tfoot>
                 </table>
+
+
+                <div class="card-footer">
+                    <div class="card-body">
+                        <div class="row">
+
+                            <div class="col-md-12 text-right">
+                                <dl class="row">
+                                    <dt class="col-md-12">Palembang, {{ date('d/m/Y') }}</dt>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12 text-right">
+                                <dt>Hendra Setiawan</dt>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
                 <button onclick="window.print();" class="btn btn-primary mt-2 no-print">
                     Print Me
                 </button>
             </div>
+
+
+
     </div>
     </div>
 

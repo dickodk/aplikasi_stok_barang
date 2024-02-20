@@ -33,6 +33,12 @@
                             </div>
                         @endif
 
+                        @if (session()->has('danger'))
+                            <div class='alert alert-danger mb-4'>
+                                {{ session()->get('danger') }}
+                            </div>
+                        @endif
+
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
@@ -40,7 +46,7 @@
                                     <th>No. </th>
                                     <th>Nama barang</th>
                                     <th>Harga Jual</th>
-                                    <th>qty</th>
+                                    <th>Jumlah</th>
                                     <th>Jenis Barang</th>
                                     @if (Auth::user()->role === 'owner')
                                         <th>Aksi</th>
@@ -63,14 +69,14 @@
 
                                             @if (Auth::user()->role === 'owner')
                                                 <td>
-                                                    @can('update', $post)
+                                                    @can('update', $item)
                                                         {{-- Button Ubah --}}
 
                                                         <a class="btn btn-warning mr-2"
                                                             href="{{ route('barangs.edit', ['barang' => $item->id]) }}">Ubah</a>
                                                     @endcan
 
-                                                    @can('delete', $post)
+                                                    @can('delete', $item)
                                                         {{-- Button Hapus --}}
                                                         <button class="btn btn-danger btn-hapus" data-id="{{ $item->id }}"
                                                             data-toggle="modal" data-target="#modal-sm"

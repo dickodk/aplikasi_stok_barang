@@ -68,14 +68,14 @@
 
                                     @if (Auth::user()->role === 'owner')
                                         <td>
-                                            @can('update', $post)
+                                            @can('update', $item)
                                                 {{-- Button Detaol --}}
 
                                                 <a class="btn btn-warning mr-2"
                                                     href="{{ route('detail_barang_masuks.edit', ['detail_barang_masuk' => $item->id]) }}">Ubah</a>
                                             @endcan
 
-                                            @can('delete', $post)
+                                            @can('delete', $item)
                                                 {{-- Button Hapus --}}
                                                 <button class="btn btn-danger btn-hapus" data-id="{{ $item->id }}"
                                                     data-toggle="modal" data-target="#modal-sm"

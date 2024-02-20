@@ -41,6 +41,7 @@
                                     <th>Nama Customer</th>
                                     <th>Alamat</th>
                                     <th>Nomor Telepon</th>
+                                    <th>Status</th>
                                     @if (Auth::user()->role === 'owner')
                                         <th>Aksi</th>
                                     @endif
@@ -58,6 +59,7 @@
                                             <td>{{ $item->nama_customer }}</td>
                                             <td>{{ $item->alamat }}</td>
                                             <td>{{ $item->nomor_telepon }}</td>
+                                            <td>{{ $item->status }}</td>
                                             @if (Auth::user()->role === 'owner')
                                                 <td>
                                                     {{-- Button Ubah --}}
@@ -65,10 +67,7 @@
                                                     <a class="btn btn-warning mr-2"
                                                         href="{{ route('customers.edit', ['customer' => $item->id]) }}">Ubah</a>
 
-                                                    {{-- Button Hapus --}}
-                                                    <button class="btn btn-danger btn-hapus" data-id="{{ $item->id }}"
-                                                        data-toggle="modal" data-target="#modal-sm"
-                                                        data-nama="{{ $item->nama_customer }}">Hapus</button>
+
 
                                                 </td>
                                             @endif

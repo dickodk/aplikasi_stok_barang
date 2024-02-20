@@ -91,6 +91,7 @@ class SupplierController extends Controller
             'nama_supplier' => 'required|max:50',
             'alamat' => 'required|max:200',
             'nomor_telepon' => 'required|max:13',
+            'status' => 'required|max:50'
         ],
         [
             'nama_supplier.required' => "Kolom :attribute tidak boleh kosong",
@@ -99,6 +100,7 @@ class SupplierController extends Controller
             'alamat.max' => "Kolom :attribute tidak boleh lebih dari 200 karakter",
             'nomor_telepon.required' => "Kolom :attribute tidak boleh kosong",
             'nomor_telepon.max' => "Kolom :attribute tidak boleh lebih dari 13 karakter",
+            'status.required' => "Kolom :attribute tidak boleh kosong",
         ]);
 
         // $getSupplier = supplier::find($supplier->id);
@@ -106,6 +108,7 @@ class SupplierController extends Controller
         'nama_supplier' => $validateData['nama_supplier'],
         'alamat' => $validateData['alamat'],
         'nomor_telepon' => $validateData['nomor_telepon'],
+        'status' =>  $validateData['status'],
         ]);
 
 

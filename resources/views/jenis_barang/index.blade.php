@@ -32,7 +32,11 @@
                                 {{ session()->get('success') }}
                             </div>
                         @endif
-
+                        @if (session()->has('danger'))
+                            <div class='alert alert-danger mb-4'>
+                                {{ session()->get('danger') }}
+                            </div>
+                        @endif
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
